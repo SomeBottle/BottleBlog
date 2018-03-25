@@ -10,3 +10,6 @@
 ####   访问register.php进行注册。注册完毕后请务必关闭allowreg至no！
 ####   BottleLogin更改密码的程序在editpass.php。
 #### 4.登录，进入后台，初始化，敬请享用吧！
+## 目前的隐藏功能
+#### 标签：根目录下的tag.php，使用方法，tag.php?tag=标签名
+#### 搜索：在index.php更为index.php?search=关键词，支持搜索到文章内的东西
