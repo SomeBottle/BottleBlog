@@ -77,7 +77,7 @@ td {
                     <div class="panel-heading">
                         <h3 class="panel-title">
                         </h3><h3><em><?php echo $rtitle; ?></em></h3>
-						<p><small class='small-date'><?php echo $rdate;?></small></p>
+						<p><small class='small-date'><?php echo substr($rdate,0,4)."-".substr($rdate,4,2)."-".substr($rdate,6,2);?></small></p>
                     </div>
                     <div class="panel-body">
                         <?php echo $content; ?>
