@@ -6,40 +6,25 @@ if (!isset($_SESSION['iflogin']) || !isset($_SESSION['username']) || $_SESSION['
 /*页码伪静态生成器（加快加载速度） SomeBottle*/
 require "./../contents/posts/postnum.php";
 $checkpage=$pnum;
-$pagelistnum=8;
-$pagecontentnum=floor($checkpage/$pagelistnum);
-$pagemorenum=$checkpage%$pagelistnum;
-if($pagemorenum!==0&&($pagecontentnum*8+1)!==($pagecontentnum*8+$pagemorenum)){
-$filegene='<?php $totalpage='.($pagecontentnum+1).';';
-}else if($pnum<8){
-	$filegene='<?php $totalpage='.($pagecontentnum+1).';';
-}else{
-	$filegene='<?php $totalpage='.($pagecontentnum).';';
-}
+$pagecontentnum=ceil($checkpage/8);
+echo "PageContentNum:$pagecontentnum";
+$pagemorenum=$checkpage%8;
+$filegene='<?php $totalpage="'.ceil($checkpage/8).'";';
 $genenum=1;
-$pagebase=0;
+$endflag=-1;
 while($genenum<=$pagecontentnum){
-	$start=$pagebase;
-	if($pagebase==0){
-	$end=$pagebase+8;//末尾页由0开始
+	$startnum=$endflag+1;
+	$endnum=0;
+	if($genenum==$pagecontentnum){
+		$endnum=$pnum;//最后一页
 	}else{
-		$end=$pagebase+7;
+	$endnum=$startnum+7;
 	}
-	$filegene=$filegene.'$pagen'.$genenum.'="'.$start.'-'.$end.'";';
-	$pagebase+=9;
+	$filegene=$filegene.'$pagen'.$genenum.'="'.$startnum.'-'.$endnum.'";';
+	$endflag=$startnum+7;
 	$genenum+=1;
 }
-if($pagecontentnum<1){//一面都没有到
-	$filegene=$filegene.'$pagen1="0-'.$pagemorenum.'";';
-}else{
-	if($pagemorenum!==0&&($pagecontentnum*8+1)!==($pagecontentnum*8+$pagemorenum)){
-	$filegene=$filegene.'$pagen'.($genenum).'="'.($pagecontentnum*8+1).'-'.($pagecontentnum*8+$pagemorenum).'";';
-	}
-}
-$filegene=$filegene.'?>';
-if(!is_dir("./../contents/catalog")){
-	mkdir("./../contents/catalog");
-}
+$filegene=$filegene.' ?>';
 file_put_contents("./../contents/catalog/pagegnum.php",$filegene);
 echo "整页数：$pagecontentnum <hr> 余页数:$pagemorenum";
 ?>
