@@ -19,7 +19,7 @@
 							echo "<a href='p.php?id=$startid'>$title</a>";
 							echo "</h2><p></p>";
 							echo "<p>".mb_substr(strip_tags($content),0,120,"utf-8")."......</p>";
-							echo "<p></p><small class='small-date'>发布于$date</small>";
+							echo "<p></p><small class='small-date'>发布于".substr($date,0,4)."-".substr($date,4,2)."-".substr($date,6,2)."</small>";
 						}
 					}
 					$listnum=$endid;
@@ -30,7 +30,7 @@
 							echo "<a href='p.php?id=$listnum'>$title</a>";
 							echo "</h2><p></p>";
 							echo "<p>".mb_substr(strip_tags($content),0,120,"utf-8")."......</p>";
-							echo "<p></p><small class='small-date'>发布于$date</small>";
+							echo "<p></p><small class='small-date'>发布于".substr($date,0,4)."-".substr($date,4,2)."-".substr($date,6,2)."</small>";
 						}
 						$listnum-=1;
 					}
