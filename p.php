@@ -82,15 +82,15 @@ td {
                     <div class="panel-body">
                         <?php echo $content; ?>
 						<p><small class='small-date'>标签：<?php echo $tag;?></small></p>
-						<div class="panel-footer">
+						
+                    </div>
+					</div>
+					</div>
+					</div>
+					</div>
+					<center><div class="panel-body">
                         <?php require "./assets/comment.php"; ?>
-                    </div>
-                    </div>
-					</div>
-					</div>
-					</div>
-					</div>
-					
+                    </div></center>
 <div style="height:50px;"></div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container" style="text-align: center;height: 0;">
