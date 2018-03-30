@@ -59,6 +59,8 @@ session_write_close();
 						<div id="editor">
 						<?php echo $rcontent;?>
                       </div>
+					  <label>代码(实时)：</label>
+					  <p><textarea class="form-control" rows="3" name="pgdaima" id="pgdaima" oninput="calling()"></textarea></p>
 					  <p><input type="text" class="form-control" id="pagetag" name="pagetag" placeholder="页面英文链接(例：somebottle)" value="<?php echo $rtag;?>"></p>
 					  <p><input type="hidden" class="form-control" id="pagedate" name="pagedate" placeholder="日期（格式：20180324）" value="<?php if(!empty($rdate)){echo $rdate;}else{echo date("Ymd");}?>"></p>
 					  <p>&nbsp;</p>
@@ -89,5 +91,22 @@ while($snum>=0){
 <input type="hidden" id="datep" name="date"></input>
 <input type="hidden" id="titlep" name="title"></input>
 </form>
+<script>
+						function exchange(v){
+                       str=v;
+                      var str2 = str.replace(/"/g, "'");
+                     return str2;  
+                       }
+					   function calling(){
+						   var mains=exchange(document.getElementById('pgdaima').value);
+						   editor.txt.html(mains);
+						   document.getElementById('pgdaima').focus();
+					   }
+						function submit(){
+							var mains=exchange(document.getElementById('menudaima').value);
+							document.getElementById('daima').value=mains;
+							document.getElementById('pform').submit();
+						}
+						</script>
 <script src="./../assets/js/jquery.min.js"></script>
 <script src="./../assets/js/bootstrap.min.js"></script>

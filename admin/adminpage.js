@@ -1,12 +1,15 @@
-﻿ var E = window.wangEditor
+﻿ function exchange(v){
+                       str=v;
+                      var str2 = str.replace(/"/g, "'");
+                     return str2;  
+                       }
+ var E = window.wangEditor
         var editor = new E('#editor')
+		  editor.customConfig.onchange = function (html) {
+        document.getElementById('pgdaima').value=exchange(html);
+    }
         // 或者 var editor = new E( document.getElementById('editor') )
         editor.create()
-		function exchange(v){
-        str=v;
-        var str2 = str.replace(/"/g, "'");
-        return str2;  
-        }
 		function saves(){
 			var title=document.getElementById('pagetitle').value;
 			var content=exchange(editor.txt.html());
