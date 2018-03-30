@@ -32,6 +32,7 @@ session_write_close();
 <p><button type="submit" class="btn btn-default">提交</button><?php if($allowreg=="yes"){ ?>&nbsp;<button type="button" class="btn btn-info" onclick="goreg()">注册</button><?php } ?></p>
 </div>
 </form>
+<p><button type="button" class="btn btn-success" onclick="back()">返回首页</button></p>
 </center>
 </body>
 <?php
@@ -46,5 +47,8 @@ if(strpos($message,"Founded")!==false){
 <script>
 function goreg(){
 	window.open('register.php','_self');
+}
+function back(){
+	window.open('<?php echo str_replace("/admin/bottlelogin","",dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"])); ?>','_self');
 }
 </script>

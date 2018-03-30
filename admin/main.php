@@ -18,7 +18,8 @@ if(!file_exists("first.flag")){
 	file_put_contents("./../contents/pages/pagenum.php", $filestring);
 	file_put_contents("./../contents/catalog/pagegnum.php", $filestring2);
 	mkdir("savedconfig");
-	$stringfirst='<?php $bname="极简Blog";$bmeta="这是默认描述";$bhost="'."http://".$_SERVER['HTTP_HOST'].'";$bavatar="http://static.hdslb.com/images/member/noface.gif";?>';
+	$serverhostpath=str_replace("/admin","",dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]));
+	$stringfirst='<?php $bname="极简Blog";$bmeta="这是默认描述";$bhost="'.$serverhostpath.'";$bavatar="http://static.hdslb.com/images/member/noface.gif";?>';
 	file_put_contents("savedconfig/blogconfig.php",$stringfirst);
 	echo "<script>alert('初始化完毕！');</script>";
 }
@@ -40,6 +41,8 @@ session_write_close();
                     <p class="lead">
                     这里是BottleBlog管理后台
                     </p>
+					<p><button type="button" class="btn btn-success" onclick="resetpass()">修改密码</button>&nbsp;
+					<button type="button" class="btn btn-danger" onclick="logout()">登出</button></p>
                 </div>
             </div>
         </div>
@@ -81,5 +84,13 @@ session_write_close();
 	</div>
 	</form>
 	</center>
+	<script>
+	function logout(){
+		window.open('./bottlelogin/logout.php','_self');
+	}
+	function resetpass(){
+		window.open('./bottlelogin/editpass.php','_self');
+	}
+	</script>
 <script src="./../assets/js/jquery.min.js"></script>
 <script src="./../assets/js/bootstrap.min.js"></script>
