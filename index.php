@@ -3,11 +3,16 @@ if(!file_exists("./admin/first.flag")){
 	echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";
 	exit();
 }
+function getag($strs,$ns){
+$str=$strs;;
+$arr=explode("?", $str);
+return $arr[$ns-1];
+}
 $pagerid=str_replace("/index.php","",$_SERVER['REQUEST_URI']);
-$pageid=str_replace("/?","",$pagerid);
+$pageid=getag($_SERVER['REQUEST_URI'],2);
 require "./admin/savedconfig/blogconfig.php";
 require "./contents/catalog/pagegnum.php";
-if(!empty($pagerid)&&strpos($pageid,"=")==false){
+if(!empty($pageid)&&strpos($pageid,"=")==false){
 	require "o.php";
 	exit();
 }
