@@ -4,11 +4,17 @@ if(!isset($_SESSION['iflogin'])||!isset($_SESSION['username'])||$_SESSION['iflog
 	echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
 	exit();
 }
+ if (!file_exists("./../contents/pages/pagenum.php")) {
+        $filestring = '<?php $pnum=0;?>';
+        file_put_contents("./../contents/pages/pagenum.php", $filestring);
+    }
 $editpost="";
 $rtitle="";
 $rcontent="";
 $rtag="";
 $rdate="";
+$rwzid="";
+require "./../contents/posts/postnum.php";
 if(!empty($_GET['edit'])){
 	$editpost=str_replace("id","",$_GET['edit']);
 	if(!file_exists("./../contents/posts/post$editpost.php")){
@@ -20,7 +26,10 @@ if(!empty($_GET['edit'])){
 		$rcontent=$content;
 		$rtag=$tag;
 		$rdate=$date;
+		$rwzid=$wzid;
 	}
+}else{
+	$rwzid="wzpost".$pnum;
 }
 date_default_timezone_set('Asia/Shanghai');
 session_write_close();
@@ -69,7 +78,6 @@ session_write_close();
 							 </form>
 				    	</h2>
 <?php
-require "./../contents/posts/postnum.php";
 $snum=$pnum;
 $maxnum=$snum-10;
 if(empty($_POST['search'])){
@@ -113,6 +121,7 @@ while($snum>=0){
 <input type="hidden" id="tagp" name="tag"></input>
 <input type="hidden" id="datep" name="date"></input>
 <input type="hidden" id="titlep" name="title"></input>
+<input type="hidden" name="wzidp" value="<?php echo $rwzid; ?>"></input>
 </form>
 <script src="./../assets/js/jquery.min.js"></script>
 <script src="./../assets/js/bootstrap.min.js"></script>

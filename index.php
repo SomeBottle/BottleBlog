@@ -75,22 +75,6 @@ if(!empty($_GET['search'])){
 		<small style="line-height: 48px;"><a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow">备案号</a></small>
     </div>
 </nav>
-<script>
-						function exchange(v){
-                       str=v;
-                      var str2 = str.replace(/"/g, "'");
-                     return str2;  
-                       }
-					   function calling(){
-						   var mains=exchange(document.getElementById('menudaima').value);
-						   document.getElementById('preview').innerHTML=mains;
-					   }
-						function submit(){
-							var mains=exchange(document.getElementById('menudaima').value);
-							document.getElementById('daima').value=mains;
-							document.getElementById('pform').submit();
-						}
-						</script>
 <script src="./assets/js/main.js"></script>
 <script src="./assets/js/jquery.min.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>

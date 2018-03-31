@@ -16,13 +16,15 @@ SomeBottle*/
 			$rcontent=$content;
 			$rtag=$tag;
 			$rdate=$date;
-			$rpoststring='<?php $title="'.$rtitle.'";$content="'.$rcontent.'";$date="'.$rdate.'";$tag="'.$rtag.'";?>';
+			$rwzid=$wzid;
+			$rpoststring='<?php $title="'.$rtitle.'";$content="'.$rcontent.'";$date="'.$rdate.'";$tag="'.$rtag.'";$wzid="'.$rwzid.'"; ?>';
 			@include("./../contents/posts/post".($snum+1).".php");
 			$r2title=$title;
 			$r2content=$content;
 			$r2tag=$tag;
 			$r2date=$date;
-			$r2poststring='<?php $title="'.$r2title.'";$content="'.$r2content.'";$date="'.$r2date.'";$tag="'.$r2tag.'";?>';
+			$r2wzid=$wzid;
+			$r2poststring='<?php $title="'.$r2title.'";$content="'.$r2content.'";$date="'.$r2date.'";$tag="'.$r2tag.'";$wzid="'.$r2wzid.'"; ?>';
 			if($rdate>$r2date){
 				file_put_contents("./../contents/posts/post$snum.php", $r2poststring);
 				file_put_contents("./../contents/posts/post".($snum+1).".php", $rpoststring);

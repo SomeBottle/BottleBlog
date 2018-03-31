@@ -11,6 +11,7 @@ $tag=$_POST['tag'];
 $content=$_POST['content'];
 $date=$_POST['date'];
 $status=$_GET['edit'];
+$wzids=$_POST['wzidp'];
 if(empty($dotype)||empty($title)||empty($tag)||empty($content)||empty($date)||empty($status)){
 	echo "<script>alert('请不要留空！');window.open('main.php','_self');</script>";
 	exit();
@@ -21,7 +22,7 @@ if ($dotype == "posts") {
         file_put_contents("./../contents/posts/postnum.php", $filestring);
     }
     require "./../contents/posts/postnum.php";
-	$poststring='<?php $title="'.$title.'";$content="'.$content.'";$date="'.$date.'";$tag="'.$tag.'";?>';
+	$poststring='<?php $title="'.$title.'";$content="'.$content.'";$date="'.$date.'";$tag="'.$tag.'";$wzid="'.$wzids.'"; ?>';
 	if($status=="new"){//如果是发布新文章
 	file_put_contents("./../contents/posts/post$pnum.php", $poststring);
 	$newpnum=$pnum+1;
@@ -36,10 +37,6 @@ require "datechange.php";
 //生成伪静态页码
 require "pagenumber.php";
 }else if ($dotype == "pages") {
-    if (!file_exists("./../contents/pages/pagenum.php")) {
-        $filestring = '<?php $pnum=0;?>';
-        file_put_contents("./../contents/pages/pagenum.php", $filestring);
-    }
     require "./../contents/pages/pagenum.php";
 	$checkrepeat=0;
 	$pagestring='<?php $title="'.$title.'";$content="'.$content.'";$date="'.$date.'";$pagelink="'.$tag.'";?>';

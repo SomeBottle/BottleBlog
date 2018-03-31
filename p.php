@@ -14,6 +14,7 @@ if(!file_exists("./contents/posts/post$postid.php")){
 		$GLOBALS['rcontent']=$content;
 		$GLOBALS['rtag']=$tag;
 		$GLOBALS['rdate']=$date;
+		$GLOBALS['rwzid']=$wzid;
 	}
 date_default_timezone_set('Asia/Shanghai');
 require "./assets/header.php";

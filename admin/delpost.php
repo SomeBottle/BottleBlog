@@ -20,7 +20,8 @@ $delpost=$_GET['postid'];
 			$rcontent=$content;
 			$rtag=$tag;
 			$rdate=$date;
-			$rpoststring='<?php $title="'.$rtitle.'";$content="'.$rcontent.'";$date="'.$rdate.'";$tag="'.$rtag.'";?>';
+			$rwzid=$wzid;
+			$rpoststring='<?php $title="'.$rtitle.'";$content="'.$rcontent.'";$date="'.$rdate.'";$tag="'.$rtag.'";$wzid="'.$rwzid.'"; ?>';
 			file_put_contents("./../contents/posts/post$lastfile.php", $rpoststring);
 			}
 			$snum+=1;
