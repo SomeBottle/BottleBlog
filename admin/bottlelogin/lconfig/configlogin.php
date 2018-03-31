@@ -11,7 +11,7 @@ $alreadyregistered="箱子里已经有这个用户名了诶！";//已经存在�
 $regsuccessmessage="你的用户名已经被放入箱子中了";//注册成功
 $retypeerror="重复密码错误！";//重复密码错误
 $changesuccessmessage="密码成功被修改！";//修改密码成功
-$loginrefer=$serverhostpath."/admin/main.php";//登录后重定向
+$loginrefer=$serverhostpath."/main.php";//登录后重定向
 $notlogged="你还没有被允许进入箱子呢！";//还没有登录，未经过checker验证
 $allowreg="no";//是否允许注册，是:"yes",否:"no"
 ?>
