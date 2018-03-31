@@ -62,7 +62,16 @@ session_write_close();
 ?>
 <h2>正在发布文章or页面</h2>
 <?php if($dotype=="posts"){?>
-<script>alert('success!');window.open('editposts.php','_self');</script>
+<script>
+var myDate = new Date();
+var rmin=Number(localStorage.fbmintime);
+var rsec=Number(localStorage.fbsectime);
+var usedmin=myDate.getMinutes()-rmin;
+var usedsec=myDate.getSeconds()-rsec+usedmin*60;
+alert('success!发布文章耗时'+usedsec+'秒');window.open('editposts.php','_self');
+</script>
 <?php }else if ($dotype = "pages") {  ?>
-<script>alert('success!');window.open('editpages.php','_self');</script>
+<script>
+alert('success!');window.open('editpages.php','_self');
+</script>
 <?php } ?>

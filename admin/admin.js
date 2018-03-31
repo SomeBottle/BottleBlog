@@ -27,7 +27,10 @@
 			}
 		}
 		function submit(){
+			var myDate = new Date();
 			if(confirm("确定发布嘛~\n你可能是误点了哦~QwQ")){
+			localStorage.fbmintime=myDate.getMinutes();
+			localStorage.fbsectime=myDate.getSeconds();
 			var title=document.getElementById('posttitle').value;
 			var content=exchange(editor.txt.html());
 			var date=document.getElementById('postdate').value;
