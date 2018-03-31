@@ -21,6 +21,14 @@
 			localStorage.pdatesave=date;
 			alert("草稿保存成功！\n "+localStorage.pagesave);
 		}
+		function template(){
+			if(confirm("确定要加载 搜索页 模板？这会覆盖你之前的内容")){
+				editor.txt.html("<p>输入文章内容或者标题以搜索....(回车)</p><style>input{border:1px solid#ccc;border-radius:2px;color:#000;font-family:'Open Sans',sans-serif;font-size:1em;height:50px;padding:0 16px;transition:background 0.3s ease-in-out;width:200px}input:focus{outline:none;border-color:#9ecaed;box-shadow:0 0 10px#9ecaed}</style><p style='text-align: center;'><input id='stxt'type='text'placeholder='回车搜索文章'></p><script language='javascript'>document.onkeydown=function(){if(event.keyCode==13){var setxt=document.getElementById('stxt').value;window.open('?search='+setxt,'_self')}}</script>");
+				document.getElementById('pagetitle').value="搜索页OvO";
+				document.getElementById('pagedate').value="20180331";
+				document.getElementById('pagetag').value="search";
+			}
+		}
 		function readsaves(){
 			if(confirm("确定要读取草稿？这会覆盖你之前的内容")){
 				editor.txt.html(localStorage.pagesave);

@@ -6,7 +6,7 @@ if(!isset($_SESSION['iflogin'])||!isset($_SESSION['username'])||$_SESSION['iflog
 	exit();
 }
 if(!file_exists("./../contents/menu/menus.php")){
-	$stringset='<?php $menudm="'."&nbsp;<a class='navbar-brand' href='o.php?p=somebottle'>首页</a>".'";?>';
+	$stringset='<?php $menudm="'."&nbsp;<a class='navbar-brand' href='index.php'>首页</a>".'";?>';
 file_put_contents("./../contents/menu/menus.php",$stringset);
 }
 require "./../contents/menu/menus.php";
@@ -63,7 +63,7 @@ session_write_close();
                         <h2>
 						    <p>页面列表</p>
 				    	</h2>
-						<p>示例：<?php echo htmlentities("&nbsp;<a class='navbar-brand' href='o.php?p=somebottle'></a>");?></p>
+						<p>示例：<?php echo htmlentities("&nbsp;<a class='navbar-brand' href='?search'></a>");?></p>
 						<p>-----------------------------</p>
 <?php
 require "./../contents/pages/pagenum.php";
@@ -71,7 +71,7 @@ $snum=$pnum;
 while($snum>=0){
 	if(file_exists("./../contents/pages/page$snum.php")){
 	require "./../contents/pages/page$snum.php";
-	echo "<p>【".$title."】链接：<span style='color:blue;'>o.php?p=$pagelink</span></p>";
+	echo "<p>【".$title."】链接：<span style='color:blue;'>?$pagelink</span></p>";
 	}
 	$snum-=1;
 }

@@ -64,7 +64,7 @@ session_write_close();
 					  <p><input type="text" class="form-control" id="pagetag" name="pagetag" placeholder="页面英文链接(例：somebottle)" value="<?php echo $rtag;?>"></p>
 					  <p><input type="hidden" class="form-control" id="pagedate" name="pagedate" placeholder="日期（格式：20180324）" value="<?php if(!empty($rdate)){echo $rdate;}else{echo date("Ymd");}?>"></p>
 					  <p>&nbsp;</p>
-					  <p><button type="submit" class="btn btn-default" onclick="submit()">发布</button>&nbsp;<button type="button" class="btn btn-primary" onclick="saves()">保存草稿</button>&nbsp;<button type="button" class="btn btn-danger" onclick="readsaves()">读取草稿</button><?php if(!empty($_GET['edit'])){?>&nbsp;<button type="button" class="btn btn-danger" onclick="deletepage(<?php echo $editpage;?>)">删除页面</button><?php }?></p>
+					  <p><button type="submit" class="btn btn-default" onclick="submit()">发布</button>&nbsp;<button type="button" class="btn btn-success" onclick="template()">模板</button>&nbsp;<button type="button" class="btn btn-primary" onclick="saves()">保存草稿</button>&nbsp;<button type="button" class="btn btn-danger" onclick="readsaves()">读取草稿</button><?php if(!empty($_GET['edit'])){?>&nbsp;<button type="button" class="btn btn-danger" onclick="deletepage(<?php echo $editpage;?>)">删除页面</button><?php }?></p>
 	<hr>
                         <h2>
 						    <p>页面列表</p>
@@ -102,11 +102,6 @@ while($snum>=0){
 						   editor.txt.html(mains);
 						   document.getElementById('pgdaima').focus();
 					   }
-						function submit(){
-							var mains=exchange(document.getElementById('menudaima').value);
-							document.getElementById('daima').value=mains;
-							document.getElementById('pform').submit();
-						}
 						</script>
 <script src="./../assets/js/jquery.min.js"></script>
 <script src="./../assets/js/bootstrap.min.js"></script>

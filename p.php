@@ -82,7 +82,7 @@ td {
                     </div>
                     <div class="panel-body">
                         <?php echo $content; ?>
-						<p><small class='small-date'>标签：<?php echo $tag;?></small></p>
+						<p><small class='small-date'>标签：<?php require "./assets/postag.php";getag($tag); ?></small></p>
 						
                     </div>
 					</div>

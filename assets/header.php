@@ -1,6 +1,6 @@
 ﻿<?php
 if(!file_exists("./contents/menu/menus.php")){
-	$stringset='<?php $menudm="'."&nbsp;<a class='navbar-brand' href='o.php?p=somebottle'>首页</a>".'";?>';
+	$stringset='<?php $menudm="'."&nbsp;<a class='navbar-brand' href='index.php'>首页</a>".'";?>';
 file_put_contents("./contents/menu/menus.php",$stringset);
 }
 require "./contents/menu/menus.php";

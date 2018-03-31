@@ -1,4 +1,5 @@
 ﻿<?php
+require "./admin/savedconfig/blogconfig.php";
 require "./assets/header.php";
 if(!file_exists("./admin/first.flag")){
 	echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";

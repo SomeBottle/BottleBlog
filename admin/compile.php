@@ -42,7 +42,7 @@ require "pagenumber.php";
 	$pagestring='<?php $title="'.$title.'";$content="'.$content.'";$date="'.$date.'";$pagelink="'.$tag.'";?>';
 	if($status=="new"){//如果是发布新页面
 	while($checkrepeat<=$pagenum){
-		require "./../contents/pages/page$checkrepeat.php";
+		include("./../contents/pages/page$checkrepeat.php");
 		if($pagelink==$tag){
 			echo "<script>alert('你与id为$checkrepeat 的页面的英文链接撞车了！');window.open('editpages.php','_self');</script>";
 			exit();

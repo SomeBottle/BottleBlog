@@ -3,8 +3,6 @@ if(!file_exists("./admin/first.flag")){
 	echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";
 	exit();
 }
-require "./admin/savedconfig/blogconfig.php";
-$pageid=$_GET['p'];
 $getid="";
 $check=0;
 require "./contents/pages/pagenum.php";
@@ -25,7 +23,7 @@ if($getid!==""){
 		$GLOBALS['rtag']=$pagelink;
 		$GLOBALS['rdate']=$date;
 }else{
-	echo "<script>alert('文章读取失败！');window.open('index.php','_self');</script>";
+	echo "<script>alert('页面读取失败！');window.open('index.php','_self');</script>";
 	exit();
 }
 date_default_timezone_set('Asia/Shanghai');
