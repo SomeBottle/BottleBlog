@@ -4,6 +4,18 @@ if (!isset($_SESSION['iflogin']) || !isset($_SESSION['username']) || $_SESSION['
     echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
     exit();
 }
+function valid_date($date)
+{//日期判断函数
+    if (preg_match ("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/", $date, $parts))
+    {
+        if(checkdate($parts[2],$parts[3],$parts[1]))
+            return true;
+        else
+            return false;
+    }
+    else
+        return false;
+}
 date_default_timezone_set('Asia/Shanghai');
 $dotype = $_GET['type'];
 $title=$_POST['title'];
@@ -13,13 +25,23 @@ $date=$_POST['date'];
 $status=$_GET['edit'];
 $wzids=$_POST['wzidp'];
 if(empty($dotype)||empty($title)||empty($content)||empty($date)||empty($status)){
-	echo "<script>alert('选项请不要留空！（TAG留空默认为日常）');window.open('main.php','_self');</script>";
+	echo "<script>alert('选项请不要留空！（文章TAG留空默认为日常，页面英文链接为空会生成一串随机码）');window.open('main.php','_self');</script>";
 	exit();
 }
-if(empty($tag)){
+$datestr=substr($date,0,4)."-".substr($date,4,2)."-".substr($date,6,2);
+if(empty($tag)&&$dotype == "posts"){
 	$tag='日常';
+}else if(empty($tag)&&$dotype == "pages"){
+	$getrandom=rand(0,1000);
+	$getrandom2=rand(0,4000);
+	$mainstr=md5('rands'.$getrandom.$getrandom2);
+	$tag=$mainstr;
 }
 if ($dotype == "posts") {
+	if(valid_date($datestr)==false){
+	echo "<script>alert('不合法的日期，填写格式：20170810');window.open('editposts.php','_self');</script>";
+	exit();
+    }
     if (!file_exists("./../contents/posts/postnum.php")) {
         $filestring = '<?php $pnum=0;?>';
         file_put_contents("./../contents/posts/postnum.php", $filestring);
