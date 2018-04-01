@@ -1,5 +1,6 @@
 # BottleBlog
 ## 无须数据库的，基于PHP的博客系统~
+*
 *  轻便
 *  容易备份
 ----------------------------------
@@ -13,5 +14,7 @@
 ####   访问register.php进行注册。注册完毕后请务必关闭allowreg至no！
 ####   BottleLogin更改密码的程序在editpass.php。
 #### 4.登录，进入后台，初始化，敬请享用吧！
-## 目前无隐藏功能
+## 隐藏功能
+*
+* 标签默认页面-示例：http://localhost/?tag
 ![Example](http://ww2.sinaimg.cn/mw1024/a15b4afegy1fpp4dx06awj21hc0mnmxq)
