@@ -12,6 +12,7 @@ if(!file_exists("first.flag")){
 	mkdir("./../contents/pages");
 	mkdir("./../contents/menu");
 	mkdir("./../contents/catalog");
+	mkdir("./../contents/tags");
 	$filestring = '<?php $pnum=0;?>';
 	$filestring2 = '<?php $totalpage=1;?>';
     file_put_contents("./../contents/posts/postnum.php", $filestring);
