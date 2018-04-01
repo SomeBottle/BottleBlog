@@ -1,9 +1,9 @@
 ﻿<?php
 require "./admin/savedconfig/blogconfig.php";
 require "./assets/header.php";
-if(!file_exists("./admin/first.flag")){
-	echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";
-	exit();
+if (!file_exists("./admin/first.flag")) {
+    echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";
+    exit();
 }
 require "./admin/savedconfig/blogconfig.php";
 require "./contents/catalog/pagegnum.php";
@@ -14,10 +14,10 @@ date_default_timezone_set('Asia/Shanghai');
             <div class="col-xs-12">
                 <div class="jumbotron well">
                     <h1>
-					<?php echo $bname;?>
+					<?php echo $bname; ?>
 				    </h1>
                     <p class="lead">
-                    <?php echo $bmeta;?>
+                    <?php echo $bmeta; ?>
                     </p>
                 </div>
             </div>
@@ -43,43 +43,46 @@ date_default_timezone_set('Asia/Shanghai');
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-						    Tag:<?php if(empty($label)){echo $_GET['tag'];}else{echo "All";} ?>
+						    Tag:<?php if (!empty($label)) {
+    echo $_GET['tag'];
+} else {
+    echo "All";
+} ?>
 						</h3>
                     </div>
 <?php
-$label=$totag;
-if(empty($label)){
-	$tagstring=file_get_contents('./contents/tags/tagall.txt');
-	$arr=explode(",", $tagstring);
-$totaltagnum=count($arr)-1;
-$makenum=0;
-while($makenum<=$totaltagnum){
-	echo "<hr><h2>";
-			echo "<a href='?tag=".$arr[$makenum]."'>".$arr[$makenum]."</a>";
-			echo "</h2><p></p>";
-	$makenum+=1;
-}
-	
-}else{
-date_default_timezone_set('Asia/Shanghai');
-require "./contents/posts/postnum.php";
-$tagcheck=$pnum;
-$tagout=0;
-$echostring="<h3>标签：$label</h3>";
-while($tagcheck>=0){
-	if(file_exists("./contents/posts/post$tagcheck.php")){
-		require "./contents/posts/post$tagcheck.php";
-		if(strpos($tag,$label)!==false){
-			$echostring=$echostring."<p>$title</p><p>&nbsp;</p>";
-			echo "<hr><h2>";
-			echo "<a href='p.php?id=$tagcheck'>$title</a>";
-			echo "</h2><p></p>";
-			echo "<p>".mb_substr(strip_tags($content),0,120,"utf-8")."......</p>";
-			echo "<p></p><small class='small-date'>发布于$date</small>";
-		}
-	}
-	$tagcheck-=1;
-}
+$label = $totag;
+if (empty($label)) {
+    $tagstring = file_get_contents('./contents/tags/tagall.txt');
+    $arr = explode(",", $tagstring);
+    $totaltagnum = count($arr) - 1;
+    $makenum = 0;
+    while ($makenum <= $totaltagnum) {
+        echo "<hr><h2>";
+        echo "<a href='?tag=" . $arr[$makenum] . "'>" . $arr[$makenum] . "</a>";
+        echo "</h2><p></p>";
+        $makenum+= 1;
+    }
+} else {
+    date_default_timezone_set('Asia/Shanghai');
+    require "./contents/posts/postnum.php";
+    $tagcheck = $pnum;
+    $tagout = 0;
+    $echostring = "<h3>标签：$label</h3>";
+    while ($tagcheck >= 0) {
+        if (file_exists("./contents/posts/post$tagcheck.php")) {
+            require "./contents/posts/post$tagcheck.php";
+            if (strpos($tag, $label) !== false) {
+                $echostring = $echostring . "<p>$title</p><p>&nbsp;</p>";
+                echo "<hr><h2>";
+                echo "<a href='p.php?id=$tagcheck'>$title</a>";
+                echo "</h2><p></p>";
+                echo "<p>" . mb_substr(strip_tags($content), 0, 120, "utf-8") . "......</p>";
+                echo "<p></p><small class='small-date'>发布于$date</small>";
+            }
+        }
+        $tagcheck-= 1;
+    }
 }
 ?>
                     </div>
@@ -89,7 +92,7 @@ while($tagcheck>=0){
 <div style="height:50px;"></div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container" style="text-align: center;height: 0;">
-        <small style="line-height: 48px;"><p>&copy;<?php echo date('Y');?> <?php echo $bname?></p></small>  
+        <small style="line-height: 48px;"><p>&copy;<?php echo date('Y'); ?> <?php echo $bname ?></p></small>  
     </div>
 </nav>
 <script src="./assets/js/main.js"></script>

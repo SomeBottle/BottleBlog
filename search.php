@@ -7,10 +7,10 @@ date_default_timezone_set('Asia/Shanghai');
             <div class="col-xs-12">
                 <div class="jumbotron well">
                     <h1>
-					<?php echo $bname;?>
+					<?php echo $bname; ?>
 				    </h1>
                     <p class="lead">
-                    <?php echo $bmeta;?>
+                    <?php echo $bmeta; ?>
                     </p>
                 </div>
             </div>
@@ -36,30 +36,30 @@ date_default_timezone_set('Asia/Shanghai');
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-						    Search:<?php echo $_GET['search'];?>
+						    Search:<?php echo $_GET['search']; ?>
 						</h3>
                     </div>
 <?php
-$label=$_GET['search'];
-if(empty($label)){
-	echo "<script>alert('Tag Require');window.open('index.php','_self');</script>";
+$label = $_GET['search'];
+if (empty($label)) {
+    echo "<script>alert('Search Form Require');window.open('index.php','_self');</script>";
 }
 date_default_timezone_set('Asia/Shanghai');
 require "./contents/posts/postnum.php";
-$tagcheck=$pnum;
-$tagout=0;
-while($tagcheck>=0){
-	if(file_exists("./contents/posts/post$tagcheck.php")){
-		require "./contents/posts/post$tagcheck.php";
-		if(strpos($title,$label)!==false||strpos($content,$label)!==false){
-			echo "<hr><h2>";
-			echo "<a href='p.php?id=$tagcheck'>$title</a>";
-			echo "</h2><p></p>";
-			echo "<p>".mb_substr(strip_tags($content),0,120,"utf-8")."......</p>";
-			echo "<p></p><small class='small-date'>发布于$date</small>";
-		}
-	}
-	$tagcheck-=1;
+$tagcheck = $pnum;
+$tagout = 0;
+while ($tagcheck >= 0) {
+    if (file_exists("./contents/posts/post$tagcheck.php")) {
+        require "./contents/posts/post$tagcheck.php";
+        if (strpos($title, $label) !== false || strpos($content, $label) !== false) {
+            echo "<hr><h2>";
+            echo "<a href='p.php?id=$tagcheck'>$title</a>";
+            echo "</h2><p></p>";
+            echo "<p>" . mb_substr(strip_tags($content), 0, 120, "utf-8") . "......</p>";
+            echo "<p></p><small class='small-date'>发布于$date</small>";
+        }
+    }
+    $tagcheck-= 1;
 }
 ?>
                     </div>
@@ -69,7 +69,7 @@ while($tagcheck>=0){
 <div style="height:50px;"></div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container" style="text-align: center;height: 0;">
-        <small style="line-height: 48px;"><p>&copy;<?php echo date('Y');?> <?php echo $bname?></p></small>  
+        <small style="line-height: 48px;"><p>&copy;<?php echo date('Y'); ?> <?php echo $bname ?></p></small>  
     </div>
 </nav>
 <script src="./assets/js/main.js"></script>

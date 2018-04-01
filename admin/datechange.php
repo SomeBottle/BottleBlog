@@ -10,11 +10,11 @@ if ($posttype == "new") { //如果是新文章
     $realpnum = $pnum - 2;
     $rpostdate = $date;
     require "./../contents/posts/post$realpnum.php";
-    if (intval($rpostdate) < intval($date)) {//如果日期有差别
+    if (intval($rpostdate) < intval($date)) { //如果日期有差别
         $checknum = $pnum;
         while ($checknum >= 0) {
             $snum = ($pnum - 1);
-            while ($snum >=0) {
+            while ($snum >= 0) {
                 if (file_exists("./../contents/posts/post$snum.php")) {
                     require "./../contents/posts/post$snum.php";
                     $rtitle = $title;
@@ -33,7 +33,7 @@ if ($posttype == "new") { //如果是新文章
                     if ($rdate > $r2date) {
                         file_put_contents("./../contents/posts/post$snum.php", $r2poststring);
                         file_put_contents("./../contents/posts/post" . ($snum + 1) . ".php", $rpoststring);
-                    }else if ($rdate < $r2date) {
+                    } else if ($rdate < $r2date) {
                         break;
                     }
                 }
@@ -42,16 +42,16 @@ if ($posttype == "new") { //如果是新文章
             $checknum-= 1;
         }
     }
-}  else { //如果是编辑文章
-$editnum=str_replace("id","",$status);
-echo "<h1>$editnum</h1>";
-$half=ceil($pnum/2);
+} else { //如果是编辑文章
+    $editnum = str_replace("id", "", $status);
+    echo "<h1>$editnum</h1>";
+    $half = ceil($pnum / 2);
     $checknum = $pnum;
-	$stops=0;
-	$findnum=0;
-    while ($checknum >= 0&&$stops!==1) {
+    $stops = 0;
+    $findnum = 0;
+    while ($checknum >= 0 && $stops !== 1) {
         $snum = 0;
-        while ($snum <=($pnum - 1)) {
+        while ($snum <= ($pnum - 1)) {
             if (file_exists("./../contents/posts/post$snum.php")) {
                 require "./../contents/posts/post$snum.php";
                 $rtitle = $title;
@@ -74,23 +74,23 @@ $half=ceil($pnum/2);
             }
             $snum+= 1;
         }
-		if(file_exists("./../contents/posts/post$checknum.php")) {
-		require "./../contents/posts/post$checknum.php";
-		$rdate = $date;
-		@include ("./../contents/posts/post" . ($checknum + 1) . ".php");
-		$r2date = $date;
-		if ($rdate < $r2date) {
-                    $stops=1;
-                }
-		}
+        if (file_exists("./../contents/posts/post$checknum.php")) {
+            require "./../contents/posts/post$checknum.php";
+            $rdate = $date;
+            @include ("./../contents/posts/post" . ($checknum + 1) . ".php");
+            $r2date = $date;
+            if ($rdate < $r2date) {
+                $stops = 1;
+            }
+        }
         $checknum-= 1;
     }
-	$checknum = $pnum;
-	$stops=0;
-	$findnum=0;
-	    while ($checknum >= 0&&$stops!==1) {
+    $checknum = $pnum;
+    $stops = 0;
+    $findnum = 0;
+    while ($checknum >= 0 && $stops !== 1) {
         $snum = ($pnum - 1);
-        while ($snum >=0) {
+        while ($snum >= 0) {
             if (file_exists("./../contents/posts/post$snum.php")) {
                 require "./../contents/posts/post$snum.php";
                 $rtitle = $title;
@@ -113,15 +113,15 @@ $half=ceil($pnum/2);
             }
             $snum-= 1;
         }
-		if(file_exists("./../contents/posts/post$checknum.php")) {
-		require "./../contents/posts/post$checknum.php";
-		$rdate = $date;
-		@include ("./../contents/posts/post" . ($checknum + 1) . ".php");
-		$r2date = $date;
-		if ($rdate < $r2date) {
-                    $stops=1;
-                }
-		}
+        if (file_exists("./../contents/posts/post$checknum.php")) {
+            require "./../contents/posts/post$checknum.php";
+            $rdate = $date;
+            @include ("./../contents/posts/post" . ($checknum + 1) . ".php");
+            $r2date = $date;
+            if ($rdate < $r2date) {
+                $stops = 1;
+            }
+        }
         $checknum-= 1;
     }
 }

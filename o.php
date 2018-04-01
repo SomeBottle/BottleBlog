@@ -1,35 +1,35 @@
 ﻿<?php
-if(!file_exists("./admin/first.flag")){
-	echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";
-	exit();
+if (!file_exists("./admin/first.flag")) {
+    echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";
+    exit();
 }
-if(strpos($pageid,"tag")!==false){//如果是标签页
-	$totag="";
-	require "tag.php";
-	exit();
+if (strpos($pageid, "tag") !== false) { //如果是标签页
+    $totag = "";
+    require "tag.php";
+    exit();
 }
-$getid="";
-$check=0;
+$getid = "";
+$check = 0;
 require "./contents/pages/pagenum.php";
-while($check<=$pnum){
-	if(file_exists("./contents/pages/page$check.php")){
-	require "./contents/pages/page$check.php";
-	if($pageid==$pagelink){
-		$getid=$check;
-		break;
-	}
-	}
-	$check+=1;
+while ($check <= $pnum) {
+    if (file_exists("./contents/pages/page$check.php")) {
+        require "./contents/pages/page$check.php";
+        if ($pageid == $pagelink) {
+            $getid = $check;
+            break;
+        }
+    }
+    $check+= 1;
 }
-if($getid!==""){
-		require "./contents/pages/page$getid.php";
-		$GLOBALS['rtitle']=$title;
-		$GLOBALS['rcontent']=$content;
-		$GLOBALS['rtag']=$pagelink;
-		$GLOBALS['rdate']=$date;
-}else{
-	echo "<script>alert('页面读取失败！');window.open('index.php','_self');</script>";
-	exit();
+if ($getid !== "") {
+    require "./contents/pages/page$getid.php";
+    $GLOBALS['rtitle'] = $title;
+    $GLOBALS['rcontent'] = $content;
+    $GLOBALS['rtag'] = $pagelink;
+    $GLOBALS['rdate'] = $date;
+} else {
+    echo "<script>alert('页面读取失败！');window.open('index.php','_self');</script>";
+    exit();
 }
 date_default_timezone_set('Asia/Shanghai');
 require "./assets/header.php";
@@ -39,10 +39,10 @@ require "./assets/header.php";
             <div class="col-xs-12">
                 <div class="jumbotron well">
                     <h1>
-					<?php echo $bname;?>
+					<?php echo $bname; ?>
 				    </h1>
                     <p class="lead">
-                    <?php echo $bmeta;?>
+                    <?php echo $bmeta; ?>
                     </p>
                 </div>
             </div>
@@ -105,7 +105,7 @@ td {
 <div style="height:50px;"></div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container" style="text-align: center;height: 0;">
-        <small style="line-height: 48px;"><p>&copy;<?php echo date('Y');?> <?php echo $bname?></p></small>  
+        <small style="line-height: 48px;"><p>&copy;<?php echo date('Y'); ?> <?php echo $bname ?></p></small>  
     </div>
 </nav>
 <script src="./assets/js/main.js"></script>
