@@ -13,8 +13,8 @@ if ($posttype == "new") { //如果是新文章
     if (intval($rpostdate) < intval($date)) {//如果日期有差别
         $checknum = $pnum;
         while ($checknum >= 0) {
-            $snum = 0;
-            while ($snum <= ($pnum - 1)) {
+            $snum = ($pnum - 1);
+            while ($snum >=0) {
                 if (file_exists("./../contents/posts/post$snum.php")) {
                     require "./../contents/posts/post$snum.php";
                     $rtitle = $title;
@@ -33,9 +33,11 @@ if ($posttype == "new") { //如果是新文章
                     if ($rdate > $r2date) {
                         file_put_contents("./../contents/posts/post$snum.php", $r2poststring);
                         file_put_contents("./../contents/posts/post" . ($snum + 1) . ".php", $rpoststring);
+                    }else if ($rdate < $r2date) {
+                        break;
                     }
                 }
-                $snum+= 1;
+                $snum-= 1;
             }
             $checknum-= 1;
         }
@@ -43,8 +45,8 @@ if ($posttype == "new") { //如果是新文章
 }  else { //如果是编辑文章
     $checknum = $pnum;
     while ($checknum >= 0) {
-        $snum = 0;
-        while ($snum <= ($pnum - 1)) {
+        $snum = ($pnum - 1);
+        while ($snum >=0) {
             if (file_exists("./../contents/posts/post$snum.php")) {
                 require "./../contents/posts/post$snum.php";
                 $rtitle = $title;
@@ -65,7 +67,7 @@ if ($posttype == "new") { //如果是新文章
                     file_put_contents("./../contents/posts/post" . ($snum + 1) . ".php", $rpoststring);
                 }
             }
-            $snum+= 1;
+            $snum-= 1;
         }
         $checknum-= 1;
     }
