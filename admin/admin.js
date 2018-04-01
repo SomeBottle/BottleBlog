@@ -28,7 +28,7 @@
 		}
 		function submit(){
 			var myDate = new Date();
-			if(confirm("确定发布嘛~\n你可能是误点了哦~QwQ")){
+			if(confirm("确定发布嘛~\n你可能是误点了哦~QwQ\n\n日期排序器可能要耗费您一点时间~")){
 			localStorage.fbmintime=myDate.getMinutes();
 			localStorage.fbsectime=myDate.getSeconds();
 			var title=document.getElementById('posttitle').value;
