@@ -31,7 +31,7 @@ $delpost=$_GET['postid'];
 	    $filestring = '<?php $pnum='.$newpnum.';?>';
 	    file_put_contents("./../contents/posts/postnum.php", $filestring);
 		//检查日期
-		require "datechange.php";
+		//require "datechange.php";
 		//生成伪静态页码
 require "pagenumber.php";
 	}
