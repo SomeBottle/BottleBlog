@@ -7,9 +7,10 @@ if (!isset($_SESSION['iflogin']) || !isset($_SESSION['username']) || $_SESSION['
  SomeBottle*/
 require "./../contents/posts/postnum.php";
 if ($posttype == "new") { //如果是新文章
-    $realpnum = $pnum - 1;
+    $realpnum = $pnum - 2;
     $rpostdate = $date;
     require "./../contents/posts/post$realpnum.php";
+	echo "<script>alert('$realpnum - $rpostdate - $date');</script>";
     if (intval($rpostdate) < intval($date)) {//如果日期有差别
         $checknum = $pnum;
         while ($checknum >= 0) {
