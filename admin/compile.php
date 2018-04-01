@@ -12,9 +12,12 @@ $content=$_POST['content'];
 $date=$_POST['date'];
 $status=$_GET['edit'];
 $wzids=$_POST['wzidp'];
-if(empty($dotype)||empty($title)||empty($tag)||empty($content)||empty($date)||empty($status)){
-	echo "<script>alert('请不要留空！');window.open('main.php','_self');</script>";
+if(empty($dotype)||empty($title)||empty($content)||empty($date)||empty($status)){
+	echo "<script>alert('选项请不要留空！（TAG留空默认为日常）');window.open('main.php','_self');</script>";
 	exit();
+}
+if(empty($tag)){
+	$tag='日常';
 }
 if ($dotype == "posts") {
     if (!file_exists("./../contents/posts/postnum.php")) {
@@ -26,10 +29,12 @@ if ($dotype == "posts") {
 	if($status=="new"){//如果是发布新文章
 	file_put_contents("./../contents/posts/post$pnum.php", $poststring);
 	$newpnum=$pnum+1;
+	$GLOBALS['posttype']='new';
 	$filestring = '<?php $pnum='.$newpnum.';?>';
 	file_put_contents("./../contents/posts/postnum.php", $filestring);
 	}else{//只是编辑文章而已~~
 		$editnum=str_replace("id","",$status);
+		$GLOBALS['posttype']='edit';
 		file_put_contents("./../contents/posts/post$editnum.php", $poststring);
 	}
 	//检查日期
