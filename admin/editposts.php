@@ -103,7 +103,7 @@ while($snum>=0){
 	while($snum>=0){
 	if(file_exists("./../contents/posts/post$snum.php")){
 	require "./../contents/posts/post$snum.php";
-	if(strpos($title,$_POST['search'])||strpos($content,$_POST['search'])){
+	if(strpos($title,$_POST['search'])!==false||strpos($content,$_POST['search']!==false)){
 	echo "<p><a href='editposts.php?edit=id$snum' target='_self'>$title</a></p>";
 	}
 	}
