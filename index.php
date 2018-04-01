@@ -12,6 +12,11 @@ $pagerid=str_replace("/index.php","",$_SERVER['REQUEST_URI']);
 $pageid=getag($_SERVER['REQUEST_URI'],2);
 require "./admin/savedconfig/blogconfig.php";
 require "./contents/catalog/pagegnum.php";
+if(!empty($_GET['tag'])){//如果是标签页
+	$totag=$_GET['tag'];
+	require "tag.php";
+	exit();
+}
 if(!empty($pageid)&&strpos($pageid,"=")==false){
 	require "o.php";
 	exit();

@@ -3,6 +3,11 @@ if(!file_exists("./admin/first.flag")){
 	echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";
 	exit();
 }
+if(strpos($pageid,"tag")!==false){//如果是标签页
+	$totag="";
+	require "tag.php";
+	exit();
+}
 $getid="";
 $check=0;
 require "./contents/pages/pagenum.php";

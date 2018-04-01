@@ -8,16 +8,6 @@ if(!file_exists("./admin/first.flag")){
 require "./admin/savedconfig/blogconfig.php";
 require "./contents/catalog/pagegnum.php";
 date_default_timezone_set('Asia/Shanghai');
-$pagec=$_GET['page'];
-if(empty($pagec)){
-	$pagec=1;
-}
-function getxt($strs,$ns){
-$str=$strs;;
-$arr=explode("-", $str);
-$last=$arr[$ns-1];
-return $last;
-}
 ?>
     <div class="container">
         <div class="row">
@@ -53,14 +43,24 @@ return $last;
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-						    Tag:<?php echo $_GET['tag'];?>
+						    Tag:<?php if(empty($label)){echo $_GET['tag'];}else{echo "All";} ?>
 						</h3>
                     </div>
 <?php
-$label=$_GET['tag'];
+$label=$totag;
 if(empty($label)){
-	echo "<script>alert('Tag Require');window.open('index.php','_self');</script>";
+	$tagstring=file_get_contents('./contents/tags/tagall.txt');
+	$arr=explode(",", $tagstring);
+$totaltagnum=count($arr)-1;
+$makenum=0;
+while($makenum<=$totaltagnum){
+	echo "<hr><h2>";
+			echo "<a href='?tag=".$arr[$makenum]."'>".$arr[$makenum]."</a>";
+			echo "</h2><p></p>";
+	$makenum+=1;
 }
+	
+}else{
 date_default_timezone_set('Asia/Shanghai');
 require "./contents/posts/postnum.php";
 $tagcheck=$pnum;
@@ -79,6 +79,7 @@ while($tagcheck>=0){
 		}
 	}
 	$tagcheck-=1;
+}
 }
 ?>
                     </div>
