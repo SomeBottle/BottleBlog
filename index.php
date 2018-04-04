@@ -6,7 +6,9 @@ if (!file_exists("./admin/first.flag")) {
 function getag($strs, $ns) {
     $str = $strs;;
     $arr = explode("?", $str);
+	if(count($arr)>1){
     return $arr[$ns - 1];
+	}
 }
 $pagerid = str_replace("/index.php", "", $_SERVER['REQUEST_URI']);
 $pageid = getag($_SERVER['REQUEST_URI'], 2);
@@ -22,7 +24,7 @@ if (!empty($pageid) && strpos($pageid, "=") == false) {
     exit();
 }
 date_default_timezone_set('Asia/Shanghai');
-$pagec = $_GET['page'];
+$pagec = @$_GET['page'];
 if (empty($pagec)) {
     $pagec = 1;
 }

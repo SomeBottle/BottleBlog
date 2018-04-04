@@ -1,5 +1,6 @@
 ﻿<?php
 session_start();
+$starttime=microtime(true);
 if (!isset($_SESSION['iflogin']) || !isset($_SESSION['username']) || $_SESSION['iflogin'] !== "yes") {
     echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
     exit();
@@ -53,6 +54,18 @@ if ($dotype == "posts") {
         $GLOBALS['posttype'] = 'edit';
         file_put_contents("./../contents/posts/post$editnum.php", $poststring);
     }
+	/*TAG解析模块*/
+$arr = explode(",", $tag);
+    $totaltagnum = count($arr) - 1;
+    $makenum = 0;
+    while ($makenum <= $totaltagnum) {
+        require "tagcollecter.php";
+        if ($makenum !== $totaltagnum) {
+            echo ",";
+        }
+        $makenum+= 1;
+    }
+	/*模块结束*/
     //检查日期
     require "datechange.php";
     //生成伪静态页码
@@ -80,6 +93,8 @@ if ($dotype == "posts") {
     }
 }
 session_write_close();
+$endtime=microtime(true);
+$totalptime=$endtime-$starttime;
 ?>
 <h2>正在发布文章or页面</h2>
 <?php if ($dotype == "posts") { ?>
@@ -89,12 +104,12 @@ var rmin=Number(localStorage.fbmintime);
 var rsec=Number(localStorage.fbsectime);
 var usedmin=myDate.getMinutes()-rmin;
 var usedsec=myDate.getSeconds()-rsec+usedmin*60;
-alert('success!发布文章耗时'+usedsec+'秒');window.open('editposts.php','_self');
+alert('文章已经编辑/发布!    发布文章耗时<?php echo $totalptime; ?>秒');window.open('editposts.php','_self');
 </script>
 <?php
 } else if ($dotype = "pages") { ?>
 <script>
-alert('success!');window.open('editpages.php','_self');
+alert('页面已经编辑/发布!    发布页面耗时<?php echo $totalptime; ?>秒');window.open('editpages.php','_self');
 </script>
 <?php
 } ?>
