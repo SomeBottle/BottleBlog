@@ -9,7 +9,7 @@ require "./../contents/posts/postnum.php";
 if ($posttype == "new") { //如果是新文章
     $realpnum = $pnum - 2;
     $rpostdate = $date;
-    require "./../contents/posts/post$realpnum.php";
+    @require "./../contents/posts/post$realpnum.php";
     if (intval($rpostdate) < intval($date)) { //如果日期有差别
         $checknum = $pnum;
         while ($checknum >= 0) {

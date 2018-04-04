@@ -7,14 +7,19 @@ while ($testpage < ($pagec - 1)) {
     $realpage-= 1;
     $testpage+= 1;
 }
-$startid = getxt($ {
+$startid = @getxt($ {
     "pagen$realpage"
 }, 1);
-$endid = getxt($ {
+$endid = @getxt($ {
     "pagen$realpage"
 }, 2);
 if ($realpage <= 0) {
     echo "<script>alert('页码错误！');window.open('index.php','_self');</script>";
+}
+if(empty($endid)){
+	echo "<hr><h2>";
+    echo "<p>暂时还没有文章呢QAQ</p>";
+    echo "</h2><p></p>";
 }
 if ($startid == $endid) { //如果这一页只有一篇文章
     if (file_exists("./contents/posts/post$startid.php")) {

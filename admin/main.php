@@ -4,6 +4,7 @@ if(!isset($_SESSION['iflogin'])||!isset($_SESSION['username'])||$_SESSION['iflog
 	echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
 	exit();
 }
+date_default_timezone_set('Asia/Shanghai');
 //初始化
 if(!file_exists("first.flag")){
 	file_put_contents("first.flag","Already Put");
@@ -13,8 +14,10 @@ if(!file_exists("first.flag")){
 	mkdir("./../contents/menu");
 	mkdir("./../contents/catalog");
 	mkdir("./../contents/tags");
-	$filestring = '<?php $pnum=0;?>';
-	$filestring2 = '<?php $totalpage=1;?>';
+	$firstpost='<?php $title="Hello World";$content="<p>这是一个利用船新的博客系统——BottleBlog发布的一篇文章哦~Hello World!</p>";$date="'.date("Ymd").'";$tag="日常";$wzid="wzpost0"; ?>';
+	$filestring = '<?php $pnum=1;?>';
+	$filestring2 = '<?php $totalpage=1;$pagen1="0-1";?>';
+    file_put_contents("./../contents/posts/post0.php", $firstpost);
     file_put_contents("./../contents/posts/postnum.php", $filestring);
 	file_put_contents("./../contents/pages/pagenum.php", $filestring);
 	file_put_contents("./../contents/catalog/pagegnum.php", $filestring2);

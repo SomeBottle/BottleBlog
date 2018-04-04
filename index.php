@@ -4,7 +4,7 @@ if (!file_exists("./admin/first.flag")) {
     exit();
 }
 function getag($strs, $ns) {
-    $str = $strs;;
+    $str = $strs;
     $arr = explode("?", $str);
 	if(count($arr)>1){
     return $arr[$ns - 1];
@@ -29,7 +29,7 @@ if (empty($pagec)) {
     $pagec = 1;
 }
 function getxt($strs, $ns) {
-    $str = $strs;;
+    $str = $strs;
     $arr = explode("-", $str);
     $last = $arr[$ns - 1];
     return $last;
