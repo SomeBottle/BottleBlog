@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();
+@session_start();
 $starttime=microtime(true);
 if (!isset($_SESSION['iflogin']) || !isset($_SESSION['username']) || $_SESSION['iflogin'] !== "yes") {
     echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
@@ -92,7 +92,7 @@ $arr = explode(",", $tag);
         file_put_contents("./../contents/pages/page$editnum.php", $pagestring);
     }
 }
-session_write_close();
+@session_write_close();
 $endtime=microtime(true);
 $totalptime=$endtime-$starttime;
 ?>

@@ -84,13 +84,12 @@ td {
                         <?php echo $content; ?>
 						<p><small class='small-date'>标签：<?php require "./assets/postag.php";
 getag($tag); ?></small></p>
-						
                     </div>
 					</div>
 					</div>
 					</div>
 					</div>
-					<center><div class="panel-body">
+					<center><div class="panel-body" style="max-width:1000px;">
                         <?php require "./assets/comment.php"; ?>
                     </div></center>
 <div style="height:50px;"></div>

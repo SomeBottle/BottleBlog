@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();
+@session_start();
 require "./lconfig/configlogin.php";
 ?>
 <form action="verify.php?zc=yes&confirm=yes&do=register" method="post" id="veriform">
@@ -384,6 +384,7 @@ if($allowreg=="yes"){
         }
     }
 }
+@session_write_close();
 ?>
 <form action="<?php echo $refers; ?>" method="post" id="mesform">
 <input type="hidden" id="mes" name="mes" value="<?php echo $message; ?>"></input>

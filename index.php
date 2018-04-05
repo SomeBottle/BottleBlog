@@ -90,7 +90,7 @@ if (!empty($_GET['search'])) {
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container" style="text-align: center;height: 0;">
         <small style="line-height: 48px;"><p>&copy;<?php echo date('Y'); ?> <?php echo $bname ?></p></small>  
-		<small style="line-height: 48px;"><a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow">备案号</a></small>
+		<small style="line-height: 48px;"><a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow"><?php echo $bbeian; ?></a></small>
     </div>
 </nav>
 <script src="./assets/js/main.js"></script>

@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();
+@session_start();
 if(!isset($_SESSION['iflogin'])||!isset($_SESSION['username'])||$_SESSION['iflogin']!=="yes"){
 	echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
 	exit();
@@ -23,12 +23,12 @@ if(!file_exists("first.flag")){
 	file_put_contents("./../contents/catalog/pagegnum.php", $filestring2);
 	mkdir("savedconfig");
 	$serverhostpath=str_replace("/admin","",dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]));
-	$stringfirst='<?php $bname="极简Blog";$bmeta="这是默认描述";$bhost="'.$serverhostpath.'";$bavatar="http://static.hdslb.com/images/member/noface.gif";?>';
+	$stringfirst='<?php $bname="极简Blog";$bmeta="这是默认描述";$bhost="'.$serverhostpath.'";$bavatar="http://static.hdslb.com/images/member/noface.gif";$bbeian=""; ?>';
 	file_put_contents("savedconfig/blogconfig.php",$stringfirst);
 	echo "<script>alert('初始化完毕！');</script>";
 }
 require "savedconfig/blogconfig.php";
-session_write_close();
+@session_write_close();
 ?>
 <head>
 <link rel="stylesheet" href="./../assets/css/bootstrap.min.css">
@@ -81,6 +81,12 @@ session_write_close();
 				    	</h2>
                         <p>
                             </p><p><input type="text" class="form-control" id="blogavatar" name="blogavatar" placeholder="请输入网络头像地址" value="<?php echo $bavatar ?>"></p>
+                        <p></p>
+						<h2>
+						    <p>Blog备案号(如果有)</p>
+				    	</h2>
+                        <p>
+                            </p><p><input type="text" class="form-control" id="blogbeian" name="blogbeian" placeholder="请输入备案号" value="<?php echo $bbeian ?>"></p>
                         <p></p>
 						<p><button type="submit" class="btn btn-default">保存</button></p>
 						<hr>

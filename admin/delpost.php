@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();
+@session_start();
 if(!isset($_SESSION['iflogin'])||!isset($_SESSION['username'])||$_SESSION['iflogin']!=="yes"){
 	echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
 	exit();
@@ -36,7 +36,7 @@ $delpost=$_GET['postid'];
 require "pagenumber.php";
 	}
 date_default_timezone_set('Asia/Shanghai');
-session_write_close();
+@session_write_close();
 ?>
 <script>alert('删除完成~');window.open('editposts.php','_self');</script>
 <h1>正在删除文章...</h1>
