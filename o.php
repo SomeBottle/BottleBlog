@@ -1,7 +1,8 @@
 ﻿<?php
-if (!file_exists("./admin/first.flag")) {
-    echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";
-    exit();
+if(file_exists("./contents/cache/page$pageid.html")){
+	echo "<script>console.log('Cache Page Mode');</script>";
+	require "./contents/cache/page$pageid.html";
+	exit();
 }
 if (strpos($pageid, "tag") !== false) { //如果是标签页
     $totag = "";
@@ -22,6 +23,7 @@ while ($check <= $pnum) {
     $check+= 1;
 }
 if ($getid !== "") {
+	Ob_start();
     require "./contents/pages/page$getid.php";
     $GLOBALS['rtitle'] = $title;
     $GLOBALS['rcontent'] = $content;
@@ -111,3 +113,9 @@ td {
 <script src="./assets/js/main.js"></script>
 <script src="./assets/js/jquery.min.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>
+<?php 
+$cachecontent = Ob_get_contents();
+file_put_contents("./contents/cache/page$pageid.html",$cachecontent);
+Ob_end_clean(); 
+require "./contents/cache/page$pageid.html";
+?>

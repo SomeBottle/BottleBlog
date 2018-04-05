@@ -5,10 +5,16 @@ if (!file_exists("./admin/first.flag")) {
 }
 require "./admin/savedconfig/blogconfig.php";
 $postid = $_GET['id'];
+if(file_exists("./contents/cache/post$postid.html")){
+	echo "<script>console.log('Cache Mode');</script>";
+	require "./contents/cache/post$postid.html";
+	exit();
+}
 if (!file_exists("./contents/posts/post$postid.php")) {
     echo "<script>alert('文章读取失败！');window.open('index.php','_self');</script>";
     exit();
 } else {
+	Ob_start();
     require "./contents/posts/post$postid.php";
     $GLOBALS['rtitle'] = $title;
     $GLOBALS['rcontent'] = $content;
@@ -101,3 +107,9 @@ getag($tag); ?></small></p>
 <script src="./assets/js/main.js"></script>
 <script src="./assets/js/jquery.min.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>
+<?php 
+$cachecontent = Ob_get_contents();
+file_put_contents("./contents/cache/post$postid.html",$cachecontent);
+Ob_end_clean(); 
+require "./contents/cache/post$postid.html";
+?>

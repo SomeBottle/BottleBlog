@@ -5,6 +5,16 @@ if (!isset($_SESSION['iflogin']) || !isset($_SESSION['username']) || $_SESSION['
     echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
     exit();
 }
+function delindex($path){//删除index缓存
+   if(is_dir($path)){
+   $p = scandir($path);
+   foreach($p as $val){
+    if($val !="." && $val !=".."&&strpos($val,"indexp")!==false){
+      unlink($path.$val);
+    }
+   }
+  }
+  }
 function valid_date($date) { //日期判断函数
     if (preg_match("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/", $date, $parts)) {
         if (checkdate($parts[2], $parts[3], $parts[1])) return true;
@@ -52,6 +62,7 @@ if ($dotype == "posts") {
     } else { //只是编辑文章而已~~
         $editnum = str_replace("id", "", $status);
         $GLOBALS['posttype'] = 'edit';
+		unlink("./../contents/cache/post$editnum.html");
         file_put_contents("./../contents/posts/post$editnum.php", $poststring);
     }
 	/*TAG解析模块*/
@@ -89,9 +100,11 @@ $arr = explode(",", $tag);
         file_put_contents("./../contents/pages/pagenum.php", $filestring);
     } else { //只是编辑页面而已~~
         $editnum = str_replace("id", "", $status);
+		unlink("./../contents/cache/page$tag.html");
         file_put_contents("./../contents/pages/page$editnum.php", $pagestring);
     }
 }
+delindex("./../contents/cache/");
 @session_write_close();
 $endtime=microtime(true);
 $totalptime=$endtime-$starttime;

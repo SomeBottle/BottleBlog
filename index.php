@@ -28,6 +28,12 @@ $pagec = @$_GET['page'];
 if (empty($pagec)) {
     $pagec = 1;
 }
+if(file_exists("./contents/cache/indexp$pagec.html")){
+	echo "<script>console.log('Cache index Mode');</script>";
+	require "./contents/cache/indexp$pagec.html";
+	exit();
+}
+Ob_start();
 function getxt($strs, $ns) {
     $str = $strs;
     $arr = explode("-", $str);
@@ -96,3 +102,9 @@ if (!empty($_GET['search'])) {
 <script src="./assets/js/main.js"></script>
 <script src="./assets/js/jquery.min.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>
+<?php 
+$cachecontent = Ob_get_contents();
+file_put_contents("./contents/cache/indexp$pagec.html",$cachecontent);
+Ob_end_clean(); 
+require "./contents/cache/indexp$pagec.html";
+?>

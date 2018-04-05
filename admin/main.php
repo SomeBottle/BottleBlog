@@ -14,6 +14,7 @@ if(!file_exists("first.flag")){
 	mkdir("./../contents/menu");
 	mkdir("./../contents/catalog");
 	mkdir("./../contents/tags");
+	mkdir("./../contents/cache");
 	$firstpost='<?php $title="Hello World";$content="<p>这是一个利用船新的博客系统——BottleBlog发布的一篇文章哦~Hello World!</p>";$date="'.date("Ymd").'";$tag="日常";$wzid="wzpost0"; ?>';
 	$filestring = '<?php $pnum=1;?>';
 	$filestring2 = '<?php $totalpage=1;$pagen1="0-1";?>';
@@ -46,6 +47,7 @@ require "savedconfig/blogconfig.php";
                     这里是BottleBlog管理后台
                     </p>
 					<p><button type="button" class="btn btn-success" onclick="resetpass()">修改密码</button>&nbsp;
+					<button type="button" class="btn btn-info" onclick="cacheclear()">清除缓存</button>&nbsp;
 					<button type="button" class="btn btn-danger" onclick="logout()">登出</button></p>
                 </div>
             </div>
@@ -100,6 +102,11 @@ require "savedconfig/blogconfig.php";
 	}
 	function resetpass(){
 		window.open('./bottlelogin/editpass.php','_self');
+	}
+	function cacheclear(){
+		if(confirm('真的要清除缓存吗？')){
+			window.open('cacheclear.php','_self');
+		}
 	}
 	</script>
 <script src="./../assets/js/jquery.min.js"></script>

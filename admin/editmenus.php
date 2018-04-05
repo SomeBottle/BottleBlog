@@ -62,7 +62,7 @@ date_default_timezone_set('Asia/Shanghai');
                         <h2>
 						    <p>页面列表</p>
 				    	</h2>
-						<p>示例：<?php echo htmlentities("&nbsp;<a class='navbar-brand' href='?search'></a>"); ?></p>
+						<p>示例：<?php echo htmlentities("&nbsp;<a class='navbar-brand' href='index.php?search'></a>"); ?></p>
 						<p>-----------------------------</p>
 <?php
 require "./../contents/pages/pagenum.php";

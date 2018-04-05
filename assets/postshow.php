@@ -1,4 +1,5 @@
 ﻿ <?php
+ //文章显示Core
 require "./contents/posts/postnum.php";
 $listnum = $pnum;
 $realpage = $totalpage;
@@ -15,7 +16,9 @@ $endid = @getxt($ {
 }, 2);
 if ($realpage <= 0) {
     echo "<script>alert('页码错误！');window.open('index.php','_self');</script>";
+	Ob_end_clean(); 
 }
+//文章显示结束
 if(empty($endid)){
 	echo "<hr><h2>";
     echo "<p>暂时还没有文章呢QAQ</p>";
