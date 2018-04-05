@@ -93,7 +93,7 @@ require "savedconfig/blogconfig.php";
                         <p></p>
 						<p><button type="submit" class="btn btn-default">保存</button></p>
 						<hr>
-						<p><a href="editposts.php" target="_self">编辑文章</a>  或者  <a href="editpages.php" target="_self">编辑页面</a>  或者  <a href="editmenus.php" target="_self">编辑菜单</a></p>
+						<p><a href="editposts.php" target="_self">编辑文章</a>  或者  <a href="editpages.php" target="_self">编辑页面</a>  或者  <a href="editmenus.php" target="_self">编辑菜单</a>  或者  <a href="precache.php" target="_self">预缓存</a></p>
 	</div>
 	</form>
 	</center>

@@ -85,7 +85,7 @@ while($snum>=0){
 						<p><a href="main.php" target="_self">返回</a></p>
 	</div>
 	</center>
-<script src="adminpage.js"></script>
+<script src="./js/adminpage.js"></script>
 <form id="subform" action="compile.php?type=pages&edit=<?php if(empty($_GET['edit'])){echo "new";}else{echo "id".$editpage;}?>" method="post">
 <input type="hidden" id="contentp" name="content"></input>
 <input type="hidden" id="tagp" name="tag"></input>

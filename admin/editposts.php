@@ -128,7 +128,7 @@ if (empty($_POST['search'])) {
 						<p><a href="main.php" target="_self">返回</a></p>
 	</div>
 	</center>
-<script src="admin.js"></script>
+<script src="./js/adminpost.js"></script>
 <form id="subform" action="compile.php?type=posts&edit=<?php if (empty($_GET['edit'])) {
     echo "new";
 } else {
