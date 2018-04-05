@@ -28,6 +28,10 @@ $pagec = @$_GET['page'];
 if (empty($pagec)) {
     $pagec = 1;
 }
+if (!empty($_GET['search'])) {
+    require "search.php";
+    exit();
+}
 if(file_exists("./contents/cache/indexp$pagec.html")){
 	echo "<script>console.log('Cache index Mode');</script>";
 	require "./contents/cache/indexp$pagec.html";
@@ -41,10 +45,6 @@ function getxt($strs, $ns) {
     return $last;
 }
 require "./assets/header.php";
-if (!empty($_GET['search'])) {
-    require "search.php";
-    exit();
-}
 ?>
     <div class="container">
         <div class="row">
