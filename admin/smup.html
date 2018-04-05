@@ -1,0 +1,35 @@
+﻿<head>
+    <title>Image Upload Form</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function submitForm() {
+            console.log("submit event");
+            var fd = new FormData(document.getElementById("fileinfo"));
+			$("#showmain").html("正在上传到sm.ms....");
+            fd.append("label", "WEBUPLOAD");
+            $.ajax({
+              url: "http://sm.ms/api/upload",
+              type: "POST",
+              data: fd,
+              enctype: 'multipart/form-data',
+              processData: false,  // tell jQuery not to process the data
+              contentType: false   // tell jQuery not to set contentType
+            }).done(function( data ) {
+				mains=eval(data.data);
+				$("#showmain").html("<p>URL:"+mains.url+"</p><p><img src='"+mains.url+"'></img>");
+            });
+            return false;
+        }
+    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+</head>
+<h3>图片上传</h3>
+<form action="https://sm.ms/api/upload" id="fileinfo" method="post"
+enctype="multipart/form-data">
+<input type="file" name="smfile" id="smfile" /> 
+<input type="hidden" name="ssl" value="true"></input>
+<input type="hidden" name="format" value="json"></input>
+<br />
+<p id="showmain">&nbsp;</p>
+</form>
+<input type="button" name="submit" value="提交" onclick="submitForm()" />

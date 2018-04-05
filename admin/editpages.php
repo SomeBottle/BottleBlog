@@ -28,6 +28,7 @@ date_default_timezone_set('Asia/Shanghai');
 @session_write_close();
 ?>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> 
 <link rel="stylesheet" href="./../assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="./../assets/css/pygments.css">
 <script type="text/javascript" src="./editor/wangEditor.min.js"></script>

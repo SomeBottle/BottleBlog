@@ -35,6 +35,7 @@ date_default_timezone_set('Asia/Shanghai');
 @session_write_close();
 ?>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> 
 <link rel="stylesheet" href="./../assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="./../assets/css/pygments.css">
 <script type="text/javascript" src="./editor/wangEditor.min.js"></script>
@@ -71,6 +72,8 @@ date_default_timezone_set('Asia/Shanghai');
 						<div id="editor">
 						<?php echo $rcontent; ?>
                       </div>
+					  <label>代码(实时)：</label>
+					  <p><textarea class="form-control" rows="3" name="psdaima" id="psdaima" oninput="calling()"></textarea></p>
 					  <p><input type="text" class="form-control" id="posttag" name="posttag" placeholder="标签（英文逗号分隔）" value="<?php echo $rtag; ?>"></p>
 					  <p><input type="text" class="form-control" id="postdate" name="postdate" placeholder="日期（格式：20180324）" value="<?php if (!empty($rdate)) {
     echo $rdate;
@@ -78,7 +81,7 @@ date_default_timezone_set('Asia/Shanghai');
     echo date("Ymd");
 } ?>"></p>
 					  <p>&nbsp;</p>
-					  <p><button type="submit" class="btn btn-default" onclick="submit()">发布</button>&nbsp;<button type="button" class="btn btn-primary" onclick="saves()">保存草稿</button>&nbsp;<button type="button" class="btn btn-danger" onclick="readsaves()">读取草稿</button><?php if (!empty($_GET['edit'])) { ?>&nbsp;<button type="button" class="btn btn-danger" onclick="deletepost(<?php echo $editpost; ?>)">删除文章</button><?php
+					  <p><button type="submit" class="btn btn-default" onclick="submit()">发布</button>&nbsp;<button type="button" class="btn btn-primary" onclick="saves()">保存草稿</button>&nbsp;<button type="button" class="btn btn-danger" onclick="readsaves()">读取草稿</button>&nbsp;<button type="button" class="btn btn-info" onclick="uppic()">上传图片</button><?php if (!empty($_GET['edit'])) { ?>&nbsp;<button type="button" class="btn btn-danger" onclick="deletepost(<?php echo $editpost; ?>)">删除文章</button><?php
 } ?></p>
 	<hr>
                         <h2>
@@ -137,5 +140,20 @@ if (empty($_POST['search'])) {
 <input type="hidden" id="titlep" name="title"></input>
 <input type="hidden" name="wzidp" value="<?php echo $rwzid; ?>"></input>
 </form>
+<script>
+						function exchange(v){
+                       str=v;
+                      var str2 = str.replace(/"/g, "'");
+                     return str2;  
+                       }
+					   function calling(){
+						   var mains=exchange(document.getElementById('psdaima').value);
+						   editor.txt.html(mains);
+						   document.getElementById('psdaima').focus();
+					   }
+					   function uppic(){
+						   window.open('smup.html','_blank');
+					   }
+						</script>
 <script src="./../assets/js/jquery.min.js"></script>
 <script src="./../assets/js/bootstrap.min.js"></script>
