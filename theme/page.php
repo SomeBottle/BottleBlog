@@ -1,4 +1,4 @@
-﻿<style>
+<style>
 /*对table外观的一些支持*/
 table {
     width: 100%;

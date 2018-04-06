@@ -1,4 +1,4 @@
-﻿ <?php
+ <?php
  $searchfm = @$_GET['search'];
      //文章显示Core
 require contenturl()."/posts/postnum.php";

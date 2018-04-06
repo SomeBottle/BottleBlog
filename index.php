@@ -1,7 +1,6 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
 if (!file_exists("./admin/first.flag")) {
-    echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";
+    echo "<script>alert('Please goto the admin!');window.open('./admin/bottlelogin/login.php','_self');</script>";
     exit();
 }
 require_once dirname(__FILE__).'/assets/core.php';

@@ -1,4 +1,4 @@
-﻿<?php if (intval($pagec) !== 1) { ?><button type="button" class="btn btn-default" onclick='prepage(<?php echo $pagec; ?>)'>上一页</button><?php
+<?php if (intval($pagec) !== 1) { ?><button type="button" class="btn btn-default" onclick='prepage(<?php echo $pagec; ?>)'>上一页</button><?php
 } ?><a href="javascript:void(0)" onclick="setpage()" style="color:#000;a:hover{color:#black}">
             <?php if (empty($pagec)) {
     echo "1";

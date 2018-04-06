@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 date_default_timezone_set('Asia/Shanghai');
 $totag = $_GET['tag'];//获得标签
 $label = $totag;

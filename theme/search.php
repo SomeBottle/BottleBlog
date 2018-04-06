@@ -1,4 +1,4 @@
-﻿ <?php
+ <?php
  $searchfm = @$_GET['search'];
  if (empty($searchfm)) {
 	 echo "<script>alert('Search Form Require');window.open('index.php','_self');</script>";

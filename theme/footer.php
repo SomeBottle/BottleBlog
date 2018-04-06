@@ -1,4 +1,4 @@
-﻿<div style="height:50px;"></div>
+<div style="height:50px;"></div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container" style="text-align: center;height: 0;">
         <small style="line-height: 48px;"><p>&copy;<?php echo date('Y'); ?> <?php echo bottlename(); ?></p></small>  

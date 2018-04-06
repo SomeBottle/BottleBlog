@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*评论框模板，文章id(SourceID)请用变量$cpostid代替*/
 $cpostid=$rwzid;
 ?>
