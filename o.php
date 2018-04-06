@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
 if(file_exists("./contents/cache/page$pageid.html")){
 	echo "<script>console.log('Cache Page Mode');</script>";

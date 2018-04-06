@@ -1,9 +1,10 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
-require_once dirname(__FILE__).'/assets/core.php';
 if (!file_exists("./admin/first.flag")) {
     echo "<script>alert('没有初始化，请前往登录后台！');window.open('./admin/bottlelogin/login.php','_self');</script>";
     exit();
 }
+require_once dirname(__FILE__).'/assets/core.php';
 $pagerid = str_replace("/index.php", "", $_SERVER['REQUEST_URI']);
 $pageid = getag($_SERVER['REQUEST_URI'], 2);
 require "./contents/catalog/pagegnum.php";
