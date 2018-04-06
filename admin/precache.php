@@ -36,6 +36,7 @@ if(!isset($_SESSION['iflogin'])||!isset($_SESSION['username'])||$_SESSION['iflog
 						<p>Precached Contents</p>
 						<hr>
 						<p>注意：如果你的文章和页面有很多，这可能会耗费你一点时间，还有你的服务器资源</p>
+						<p id='status'></p>
 						<p><button type="button" id='startcache' class="btn btn-default">点我开始预缓存</button></p>
 						<hr>
 						<ul>
