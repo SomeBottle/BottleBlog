@@ -22,12 +22,18 @@
 			alert("草稿保存成功！\n "+localStorage.postsave);
 		}
 		document.onkeydown = function(e) {//监听按键保存
+		console.log('KeyboardEvent');
     var ctrlKey = e.ctrlKey;
 	var keyCode = e.keyCode;
 	if(ctrlKey && keyCode == 83) {
             saves();
-    }
+			e.preventDefault();
+			return true;
+    }else{
+		return true;
+	}
 	 e.preventDefault();
+	  return true;
 	}
 		function readsaves(){
 			if(confirm("确定要读取草稿？这会覆盖你之前的内容")){

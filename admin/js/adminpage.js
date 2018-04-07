@@ -21,13 +21,19 @@
 			localStorage.pdatesave=date;
 			alert("草稿保存成功！\n "+localStorage.pagesave);
 		}
-				document.onkeydown = function(e) {//监听按键保存
+		document.onkeydown = function(e) {//监听按键保存
+		console.log('KeyboardEvent');
     var ctrlKey = e.ctrlKey;
 	var keyCode = e.keyCode;
 	if(ctrlKey && keyCode == 83) {
             saves();
-    }
+			e.preventDefault();
+			return true;
+    }else{
+		return true;
+	}
 	 e.preventDefault();
+	  return true;
 	}
 		function template(){
 			if(confirm("确定要加载 搜索页 模板？这会覆盖你之前的内容")){
