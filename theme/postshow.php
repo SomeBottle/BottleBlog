@@ -5,7 +5,7 @@ require contenturl()."/posts/postnum.php";
 $listnum = $pnum;
 $realpage = postpagenum();
 $testpage = 0;
-while ($testpage < ($pagec - 1)) {
+while ($testpage < (intval(getnowpage()) - 1)) {
     $realpage-= 1;
     $testpage+= 1;
 }
@@ -29,22 +29,26 @@ if(empty($endid)){
 if ($startid == $endid) { //如果这一页只有一篇文章
     if (file_exists(contenturl()."/posts/post$startid.php")) {
         require contenturl()."/posts/post$startid.php";
-        echo "<hr><h2>";
-        echo "<a href='p.php?id=$startid'>$title</a>";
-        echo "</h2><p></p>";
-        echo "<p>" . mb_substr(strip_tags($content), 0, 120, "utf-8") . "......</p>";
-        echo "<p></p><small class='small-date'>发布于" . changedate($date) . "</small>";
+		/*模板部分*/?>
+        <hr><h2>
+        <a href='p.php?id=<?php echo $startid;?>'><?php echo getpostbyid($startid,'title');?></a>
+        </h2><p></p>
+        <p><?php echo getpostbyid($startid,'shortcontent');?>......</p>
+        <p></p><small class='small-date'><?php echo getpostbyid($startid,'date');?></small>
+		<?php
     }
 }
 $listnum = $endid;
 while ($listnum >= $startid) {
     if (file_exists(contenturl()."/posts/post$listnum.php")) {
         require contenturl()."/posts/post$listnum.php";
-        echo "<hr><h2>";
-        echo "<a href='p.php?id=$listnum'>$title</a>";
-        echo "</h2><p></p>";
-        echo "<p>" . mb_substr(strip_tags($content), 0, 120, "utf-8") . "......</p>";
-        echo "<p></p><small class='small-date'>发布于" . changedate($date) . "</small>";
+		/*模板部分*/?>
+        <hr><h2>
+        <a href='p.php?id=<?php echo $listnum;?>'><?php echo getpostbyid($listnum,'title');?></a>
+        </h2><p></p>
+        <p><?php echo getpostbyid($listnum,'shortcontent');?>......</p>
+        <p></p><small class='small-date'><?php echo getpostbyid($listnum,'date');?></small>
+		<?php
     }
     $listnum-= 1;
 }

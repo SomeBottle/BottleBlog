@@ -57,14 +57,14 @@ date_default_timezone_set('Asia/Shanghai');
 							<?php if(empty($_GET['edit'])){ echo "<p>-新页面</p>";}else{echo "页面id：$editpage";}?>
 							<p><input type="text" class="form-control" id="pagetitle" name="pagetitle" placeholder="标题" value="<?php echo $rtitle;?>"></p>
 						<div id="editor">
-						<?php echo $rcontent;?>
+						<?php echo htmlspecialchars_decode($rcontent);?>
                       </div>
 					  <label>代码(实时)：</label>
 					  <p><textarea class="form-control" rows="3" name="pgdaima" id="pgdaima" oninput="calling()"></textarea></p>
 					  <p><input type="text" class="form-control" id="pagetag" name="pagetag" placeholder="页面英文链接(例：somebottle)" value="<?php echo $rtag;?>"></p>
 					  <p><input type="hidden" class="form-control" id="pagedate" name="pagedate" placeholder="日期（格式：20180324）" value="<?php if(!empty($rdate)){echo $rdate;}else{echo date("Ymd");}?>"></p>
 					  <p>&nbsp;</p>
-					  <p><button type="submit" class="btn btn-default" onclick="submit()">发布</button>&nbsp;<button type="button" class="btn btn-success" onclick="template()">模板</button>&nbsp;<button type="button" class="btn btn-primary" onclick="saves()">保存草稿</button>&nbsp;<button type="button" class="btn btn-danger" onclick="readsaves()">读取草稿</button><?php if(!empty($_GET['edit'])){?>&nbsp;<button type="button" class="btn btn-danger" onclick="deletepage(<?php echo $editpage;?>)">删除页面</button><?php }?></p>
+					  <p><button type="submit" class="btn btn-default" onclick="submit()">发布</button>&nbsp;<button type="button" class="btn btn-success" onclick="template()">模板</button>&nbsp;<button type="button" class="btn btn-primary" onclick="saves()">保存草稿</button>&nbsp;<button type="button" class="btn btn-danger" onclick="readsaves()">读取草稿</button>&nbsp;<button type="button" class="btn btn-info" onclick="uppic()">上传图片</button><?php if(!empty($_GET['edit'])){?>&nbsp;<button type="button" class="btn btn-danger" onclick="deletepage(<?php echo $editpage;?>)">删除页面</button><?php }?></p>
 	<hr>
                         <h2>
 						    <p>页面列表</p>
@@ -92,13 +92,8 @@ while($snum>=0){
 <input type="hidden" id="titlep" name="title"></input>
 </form>
 <script>
-						function exchange(v){
-                       str=v;
-                      var str2 = str.replace(/"/g, "'");
-                     return str2;  
-                       }
 					   function calling(){
-						   var mains=exchange(document.getElementById('pgdaima').value);
+						   var mains=document.getElementById('pgdaima').value;
 						   editor.txt.html(mains);
 						   document.getElementById('pgdaima').focus();
 					   }

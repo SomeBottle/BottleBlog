@@ -25,7 +25,7 @@ date_default_timezone_set('Asia/Shanghai');
 $dotype = $_GET['type'];
 $title = $_POST['title'];
 $tag = $_POST['tag'];
-$content = $_POST['content'];
+$content = htmlspecialchars($_POST['content']);
 $date = $_POST['date'];
 $status = $_GET['edit'];
 $wzids = $_POST['wzidp'];

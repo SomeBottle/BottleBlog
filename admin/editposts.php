@@ -69,7 +69,7 @@ date_default_timezone_set('Asia/Shanghai');
 } ?>
 							<p><input type="text" class="form-control" id="posttitle" name="posttitle" placeholder="标题" value="<?php echo $rtitle; ?>"></p>
 						<div id="editor">
-						<?php echo $rcontent; ?>
+						<?php echo htmlspecialchars_decode($rcontent); ?>
                       </div>
 					  <label>代码(实时)：</label>
 					  <p><textarea class="form-control" rows="3" name="psdaima" id="psdaima" oninput="calling()"></textarea></p>
@@ -140,13 +140,8 @@ if (empty($_POST['search'])) {
 <input type="hidden" name="wzidp" value="<?php echo $rwzid; ?>"></input>
 </form>
 <script>
-						function exchange(v){
-                       str=v;
-                      var str2 = str.replace(/"/g, "'");
-                     return str2;  
-                       }
 					   function calling(){
-						   var mains=exchange(document.getElementById('psdaima').value);
+						   var mains=document.getElementById('psdaima').value;
 						   editor.txt.html(mains);
 						   document.getElementById('psdaima').focus();
 					   }

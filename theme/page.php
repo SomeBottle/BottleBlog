@@ -29,11 +29,11 @@ td {
                     <div class="panel-heading">
                         <h3 class="panel-title">
 						<!--$rtitle为页面标题，$content为页面内容-->
-                        </h3><h3><em><?php echo $rtitle; ?></em></h3>
+                        </h3><h3><em><?php echo getpagedetail('title'); ?></em></h3>
 						<p>&nbsp;</p>
                     </div>
                     <div class="panel-body">
-                        <?php echo $content; ?>
+                        <?php echo getpagedetail('content'); ?>
                     </div>
 					</div>
 					</div>

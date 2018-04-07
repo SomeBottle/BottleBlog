@@ -28,13 +28,13 @@ td {
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-						<!--$rtitle是文章标题，$rdate是文章日期，$content是文章内容-->
-                        </h3><h3><em><?php echo $rtitle; ?></em></h3>
-						<p><small class='small-date'><?php echo changedate($rdate); ?></small></p>
+						<!--getpostdetail(<needed>)函数：title是文章标题，date是文章日期，content是文章内容，tag是文章标签-->
+                        </h3><h3><em><?php echo getpostdetail('title'); ?></em></h3>
+						<p><small class='small-date'><?php echo changedate(getpostdetail('date')); ?></small></p>
                     </div>
                     <div class="panel-body">
-                        <?php echo $content; ?>
-						<p><small class='small-date'>标签：<?php getposttag($tag); ?></small></p>
+                        <?php echo getpostdetail('content'); ?>
+						<p><small class='small-date'>标签：<?php getposttag(getpostdetail('tag')); ?></small></p>
                     </div>
 					</div>
 					</div>

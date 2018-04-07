@@ -6,7 +6,7 @@
  var E = window.wangEditor
         var editor = new E('#editor')
 		editor.customConfig.onchange = function (html) {
-        document.getElementById('psdaima').value=exchange(html);
+        document.getElementById('psdaima').value=html;
     }
         // 或者 var editor = new E( document.getElementById('editor') )
         editor.create()
@@ -47,7 +47,7 @@
 			if(confirm("确定发布嘛~\n你可能是误点了哦~QwQ\n\n日期排序器可能要耗费您一点时间~")){
 				var myDate = new Date();
 			var title=document.getElementById('posttitle').value;
-			var content=exchange(editor.txt.html());
+			var content=editor.txt.html();
 			var date=document.getElementById('postdate').value;
 			var tag=document.getElementById('posttag').value;
 			document.getElementById('titlep').value=title;
