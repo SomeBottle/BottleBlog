@@ -1,7 +1,5 @@
 # BottleBlog
 ## 无须数据库的，基于PHP的博客系统~
-### 具体说明：https://imbottle.com/?bottleblog
-### 本人是PHP新手，高中生，该作品仅仅是兴趣使然.
 * 轻便
 * 容易备份
 * 内置缓存、全站缓存器

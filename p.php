@@ -15,6 +15,12 @@ if (!file_exists("./contents/posts/post$postid.php")) {
     exit();
 } else {
 	Ob_start();
+    require "./contents/posts/post$postid.php";
+    $GLOBALS['rtitle'] = $title;
+    $GLOBALS['rcontent'] = $content;
+    $GLOBALS['rtag'] = $tag;
+    $GLOBALS['rdate'] = $date;
+    $GLOBALS['rwzid'] = $wzid;
 }
 date_default_timezone_set('Asia/Shanghai');
 require themeurl('header.php');

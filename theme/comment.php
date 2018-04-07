@@ -1,6 +1,6 @@
 <?php
 /*评论框模板，文章id(SourceID)请用变量$cpostid代替*/
-$cpostid=getpostdetail('postid');
+$cpostid=$rwzid;
 ?>
 <!--PC和WAP自适应版-->
 <!--示例EXAMPLE-->
