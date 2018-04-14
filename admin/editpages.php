@@ -29,8 +29,14 @@ date_default_timezone_set('Asia/Shanghai');
 ?>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> 
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="./js/popper.min.js"></script>
+<script>/*容错代码*/window.onerror=function(){return true;} </script>
 <link rel="stylesheet" href="./../assets/css/bootstrap.min.css">
-<script type="text/javascript" src="./editor/wangEditor.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="./editor/summernote-lite.css" rel="stylesheet">
+    <script src="./editor/summernote-lite.js"></script>
+<script src="./editor/lang/summernote-zh-CN.js"></script>
 <title>Blog-后台管理</title>
 </head>
     <div class="container">
@@ -92,10 +98,8 @@ while($snum>=0){
 <input type="hidden" id="titlep" name="title"></input>
 </form>
 <script>
-					   function calling(){
-						   var mains=document.getElementById('pgdaima').value;
-						   editor.txt.html(mains);
-						   document.getElementById('pgdaima').focus();
+					   function uppic(){
+						   window.open('smup.html','_blank');
 					   }
 						</script>
 <script src="./../assets/js/jquery.min.js"></script>

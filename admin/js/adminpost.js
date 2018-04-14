@@ -3,19 +3,48 @@
         var str2 = str.replace(/"/g, "'");
         return str2;  
         }
- var E = window.wangEditor
-        var editor = new E('#editor')
-		editor.customConfig.onchange = function (html) {
-        document.getElementById('psdaima').value=html;
-    }
-        // 或者 var editor = new E( document.getElementById('editor') )
-        editor.create()
+var meditor=$('#editor').summernote({
+        placeholder: '',
+        tabsize: 2,
+        height: 250,
+		lang: 'zh-CN'
+      });
+	  $('#editor').on('summernote.change', function(we, contents, $editable) {
+      document.getElementById('psdaima').value=meditor.summernote('code');
+});
+/*去除编辑器BUG造成的开头空格*/
+function trimLeft(s){  
+    if(s == null) {  
+        return "";  
+    }  
+    var whitespace = new String(" \t\n\r");  
+    var str = new String(s);  
+    if (whitespace.indexOf(str.charAt(0)) != -1) {  
+        var j=0, i = str.length;  
+        while (j < i && whitespace.indexOf(str.charAt(j)) != -1){  
+            j++;  
+        }  
+        str = str.substring(j, i);  
+    }  
+    return str;  
+}  
+meditor.summernote('code', trimLeft(meditor.summernote('code')));
+
+                       function settxt(){
+						   var mains=document.getElementById('psdaima').value;
+						   meditor.summernote('code', mains);
+					   }
+					   var tsub;
+					   function calling(){
+						   clearInterval(tsub);
+						   tsub=setInterval(settxt,1500);
+					   }
 		function saves(){
 			var title=document.getElementById('posttitle').value;
-			var content=exchange(editor.txt.html());
+			var content=meditor.summernote('code');
 			var date=document.getElementById('postdate').value;
 			var tag=document.getElementById('posttag').value;
-			localStorage.postsave=exchange(editor.txt.html());
+			localStorage.postsave=meditor.summernote('code');
 			localStorage.titlesave=title;
 			localStorage.tagsave=tag;
 			localStorage.datesave=date;
@@ -37,7 +66,7 @@
 	}
 		function readsaves(){
 			if(confirm("确定要读取草稿？这会覆盖你之前的内容")){
-				editor.txt.html(localStorage.postsave);
+				meditor.summernote('code', localStorage.postsave);
 				document.getElementById('posttitle').value=localStorage.titlesave;
 				document.getElementById('postdate').value=localStorage.datesave;
 				document.getElementById('posttag').value=localStorage.tagsave;
@@ -47,7 +76,7 @@
 			if(confirm("确定发布嘛~\n你可能是误点了哦~QwQ\n\n日期排序器可能要耗费您一点时间~")){
 				var myDate = new Date();
 			var title=document.getElementById('posttitle').value;
-			var content=editor.txt.html();
+			var content=meditor.summernote('code');
 			var date=document.getElementById('postdate').value;
 			var tag=document.getElementById('posttag').value;
 			document.getElementById('titlep').value=title;
