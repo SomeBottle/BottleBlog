@@ -1,5 +1,6 @@
 # BottleBlog
 ## 无须数据库的，基于PHP的博客系统~
+* 富文本编辑器源自开源编辑器**summernote**
 ### 详细介绍：https://imbottle.com/?bottleblog
 * 轻便
 * 容易备份
