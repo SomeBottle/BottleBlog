@@ -26,7 +26,7 @@
               <h1>
                 <?php echo bottlename(); ?></h1>
               <p class="lead">
-                <?php echo bottlename(); ?></p>
+                <?php echo bottlemeta(); ?></p>
             </div>
           </div>
         </div>

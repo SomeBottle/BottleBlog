@@ -334,7 +334,7 @@ function bb_tags() {
                 if (strpos($tag, $label) !== false) {
                     $echostring = $echostring . "<p>$title</p><p>&nbsp;</p>";
                     echo "<hr><h2>";
-                    echo "<a href='p.php?id=$tagcheck'>$title</a>";
+                    echo "<a href='" . bottlehost() . "/?o$tagcheck'>$title</a>";
                     echo "</h2><p></p>";
                     echo "<p>" . mb_substr(strip_tags(htmlspecialchars_decode($content)), 0, 120, "utf-8") . "......</p>";
                     echo "<p></p><small class='small-date'>发布于$date</small>";
