@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="keywords" content="<?php echo bottlename();?>">
       <title>
-        <?php echo bottlename();?></title>
+        <?php echo nowpagetitle().bottlename(); ?></title>
       <link rel="stylesheet" href="<?php echo bottlehost();?>/assets/css/bootstrap.min.css">
       <link rel="stylesheet" href="<?php echo bottlehost();?>/theme/style.css"></head>
     

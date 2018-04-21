@@ -1,1 +1,4 @@
 /*这里只是一个示例style.css，可以用于自定义模板，该文件在header.php引入*/
+img{
+	max-height:500px;
+}

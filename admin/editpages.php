@@ -30,13 +30,9 @@ date_default_timezone_set('Asia/Shanghai');
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script src="./js/popper.min.js"></script>
 <script>/*容错代码*/window.onerror=function(){return true;} </script>
 <link rel="stylesheet" href="./../assets/css/bootstrap.min.css">
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<link href="./editor/summernote-lite.css" rel="stylesheet">
-    <script src="./editor/summernote-lite.js"></script>
-<script src="./editor/lang/summernote-zh-CN.js"></script>
 <title>Blog-后台管理</title>
 </head>
     <div class="container">
@@ -63,14 +59,24 @@ date_default_timezone_set('Asia/Shanghai');
 							<?php if(empty($_GET['edit'])){ echo "<p>-新页面</p>";}else{echo "页面id：$editpage";}?>
 							<p><input type="text" class="form-control" id="pagetitle" name="pagetitle" placeholder="标题" value="<?php echo $rtitle;?>"></p>
 						<div id="editor">
-						<?php echo htmlspecialchars_decode($rcontent);?>
+						<textarea class="form-control" rows="9" name="mainc" id="mainc" placeholder="开始编写你的页面吧！支持Markdown和HTML"><?php echo htmlspecialchars_decode($rcontent); ?></textarea>
                       </div>
-					  <label>代码(实时)：</label>
-					  <p><textarea class="form-control" rows="3" name="pgdaima" id="pgdaima" oninput="calling()"></textarea></p>
 					  <p><input type="text" class="form-control" id="pagetag" name="pagetag" placeholder="页面英文链接(例：somebottle)" value="<?php echo $rtag;?>"></p>
 					  <p><input type="hidden" class="form-control" id="pagedate" name="pagedate" placeholder="日期（格式：20180324）" value="<?php if(!empty($rdate)){echo $rdate;}else{echo date("Ymd");}?>"></p>
 					  <p>&nbsp;</p>
-					  <p><button type="submit" class="btn btn-default" onclick="submit()">发布</button>&nbsp;<button type="button" class="btn btn-success" onclick="template()">模板</button>&nbsp;<button type="button" class="btn btn-primary" onclick="saves()">保存草稿</button>&nbsp;<button type="button" class="btn btn-danger" onclick="readsaves()">读取草稿</button>&nbsp;<button type="button" class="btn btn-info" onclick="uppic()">上传图片</button><?php if(!empty($_GET['edit'])){?>&nbsp;<button type="button" class="btn btn-danger" onclick="deletepage(<?php echo $editpage;?>)">删除页面</button><?php }?></p>
+					  <p><button type="submit" class="btn btn-default" onclick="submit()">发布</button>&nbsp;<button type="button" class="btn btn-success" onclick="template()">模板</button>&nbsp;<button type="button" class="btn btn-primary" onclick="saves()">保存草稿</button>&nbsp;<button type="button" class="btn btn-danger" onclick="readsaves()">读取草稿</button>&nbsp;<button type="button" class="btn btn-info" onclick="tool()">工具箱</button><?php if(!empty($_GET['edit'])){?>&nbsp;<button type="button" class="btn btn-danger" onclick="deletepage(<?php echo $editpage;?>)">删除页面</button><?php }?></p>
+					  <div id='toolbox'>
+					    <hr><h2>撰写工具</h2>
+						<p><div id='showmain' style='max-height:80px'></div></p>
+						<p><strong>上传图片</strong></p><p>
+						<form action="https://sm.ms/api/upload" id="fileinfo" method="post"
+enctype="multipart/form-data">
+<input type="file" name="smfile" id="smfile" /> 
+<input type="hidden" name="ssl" value="true"></input>
+<input type="hidden" name="format" value="json"></input>
+<br />
+</form></p>
+					  </div>
 	<hr>
                         <h2>
 						    <p>页面列表</p>

@@ -3,48 +3,45 @@
         var str2 = str.replace(/"/g, "'");
         return str2;  
         }
-var meditor=$('#editor').summernote({
-        placeholder: '',
-        tabsize: 2,
-        height: 250,
-		lang: 'zh-CN'
-      });
-	  $('#editor').on('summernote.change', function(we, contents, $editable) {
-      document.getElementById('psdaima').value=meditor.summernote('code');
-});
-/*去除编辑器BUG造成的开头空格*/
-function trimLeft(s){  
-    if(s == null) {  
-        return "";  
-    }  
-    var whitespace = new String(" \t\n\r");  
-    var str = new String(s);  
-    if (whitespace.indexOf(str.charAt(0)) != -1) {  
-        var j=0, i = str.length;  
-        while (j < i && whitespace.indexOf(str.charAt(j)) != -1){  
-            j++;  
-        }  
-        str = str.substring(j, i);  
-    }  
-    return str;  
-}  
-meditor.summernote('code', trimLeft(meditor.summernote('code')));
-
-                       function settxt(){
-						   var mains=document.getElementById('psdaima').value;
-						   meditor.summernote('code', mains);
-					   }
-					   var tsub;
-					   function calling(){
-						   clearInterval(tsub);
-						   tsub=setInterval(settxt,1500);
-					   }
+		/*上传图片模块*/
+function submitpic() {
+            console.log("submit event");
+            var fd = new FormData(document.getElementById("fileinfo"));
+			$("#showmain").html("正在上传到sm.ms....");
+            fd.append("label", "WEBUPLOAD");
+            $.ajax({
+              url: "https://sm.ms/api/upload",
+              type: "POST",
+              data: fd,
+              enctype: 'multipart/form-data',
+              processData: false,  // tell jQuery not to process the data
+              contentType: false   // tell jQuery not to set contentType
+            }).done(function( data ) {
+				mains=eval(data.data);
+				$("#showmain").html("<img style='max-height:80px;' src='"+mains.url+"'></img>");
+				document.getElementById('mainc').value=document.getElementById('mainc').value+'\r !['+mains.filename+']('+mains.url+')  ';
+            });
+            return false;
+        }
+    $("#smfile").change(function(e) {
+        submitpic();
+    });
+/*模块结束*/
+document.getElementById('toolbox').style.display='none';
+function tool() {
+    var a=document.getElementById('toolbox');
+	if(a.style.display=='none'){
+		a.style.display='block';
+	}else{
+        a.style.display='none'; 
+    }	
+}
 		function saves(){
 			var title=document.getElementById('posttitle').value;
-			var content=meditor.summernote('code');
+			var content=document.getElementById('mainc').value;
 			var date=document.getElementById('postdate').value;
 			var tag=document.getElementById('posttag').value;
-			localStorage.postsave=meditor.summernote('code');
+			localStorage.postsave=document.getElementById('mainc').value;
 			localStorage.titlesave=title;
 			localStorage.tagsave=tag;
 			localStorage.datesave=date;
@@ -66,7 +63,7 @@ meditor.summernote('code', trimLeft(meditor.summernote('code')));
 	}
 		function readsaves(){
 			if(confirm("确定要读取草稿？这会覆盖你之前的内容")){
-				meditor.summernote('code', localStorage.postsave);
+				document.getElementById('mainc').value=localStorage.postsave;
 				document.getElementById('posttitle').value=localStorage.titlesave;
 				document.getElementById('postdate').value=localStorage.datesave;
 				document.getElementById('posttag').value=localStorage.tagsave;
@@ -76,7 +73,7 @@ meditor.summernote('code', trimLeft(meditor.summernote('code')));
 			if(confirm("确定发布嘛~\n你可能是误点了哦~QwQ\n\n日期排序器可能要耗费您一点时间~")){
 				var myDate = new Date();
 			var title=document.getElementById('posttitle').value;
-			var content=meditor.summernote('code');
+			var content=document.getElementById('mainc').value;
 			var date=document.getElementById('postdate').value;
 			var tag=document.getElementById('posttag').value;
 			document.getElementById('titlep').value=title;

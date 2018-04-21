@@ -56,6 +56,10 @@ function getmenu() {
 function themeurl($path) {
     return dirname(__FILE__) . "/../theme/" . $path;
 }
+function assetsurl($path) {
+    return dirname(__FILE__) . "/../assets/" . $path;
+}
+require_once(assetsurl('markdown.php'));
 function contenturl() {
     return dirname(__FILE__) . "/../contents";
 }
@@ -162,7 +166,7 @@ function bb_showpost() { //文章显示模块
             $export = $export . "<hr><h2>";
             $export = $export . "<a href='" . bottlehost() . "/?o$startid'>$title</a>";
             $export = $export . "</h2><p></p>";
-            $export = $export . "<p>" . mb_substr(strip_tags(htmlspecialchars_decode($content)), 0, 120, "utf-8") . "......</p>";
+            $export = $export . "<p>" . mb_substr(strip_tags(Markdown(htmlspecialchars_decode($content))), 0, 120, "utf-8") . "......</p>";
             $export = $export . "<p></p><small class='small-date'>发布于" . changedate($date) . "</small>";
         }
     }
@@ -173,7 +177,7 @@ function bb_showpost() { //文章显示模块
             $export = $export . "<hr><h2>";
             $export = $export . "<a href='" . bottlehost() . "/?o$listnum'>$title</a>";
             $export = $export . "</h2><p></p>";
-            $export = $export . "<p>" . mb_substr(strip_tags(htmlspecialchars_decode($content)), 0, 120, "utf-8") . "......</p>";
+            $export = $export . "<p>" . mb_substr(strip_tags(Markdown(htmlspecialchars_decode($content))), 0, 120, "utf-8") . "......</p>";
             $export = $export . "<p></p><small class='small-date'>发布于" . changedate($date) . "</small>";
         }
         $listnum-= 1;
@@ -219,7 +223,7 @@ function bb_pagecontent() {
     }
     if ($getid !== "") {
         require contenturl()."/pages/page$getid.php";
-        return htmlspecialchars_decode($content);
+        return Markdown(htmlspecialchars_decode($content));
     } else {
         echo "Page not found.";
     }
@@ -241,7 +245,7 @@ function bb_postcontent() {
         exit();
     } else {
         require contenturl()."/posts/post$postid.php";
-        return htmlspecialchars_decode($content);
+        return Markdown(htmlspecialchars_decode($content));
     }
 }
 function bb_postdate() {
@@ -343,5 +347,18 @@ function bb_tags() {
             $tagcheck-= 1;
         }
     }
+}
+function nowpagetitle(){
+	if(bb_isindex()){
+		return '';
+	}else if(bb_ispost()){
+		return bb_posttitle().'-';
+	}else if(bb_ispage()){
+		return bb_pagetitle().'-';
+	}else if(bb_issearch()){
+		return 'Search-';
+	}else if(bb_istag()){
+		return 'Tag-';
+	}
 }
 ?>
