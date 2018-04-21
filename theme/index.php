@@ -15,7 +15,7 @@
         <div class="navbar-header">
           <p>
             <a class="navbar-brand" href="<?php echo bottlehost();?>/index.php">
-              <img src="<?php echo bottleavatar();?>" style="height:50px;width:auto;border-radius:25px;"></img>
+              <img src="<?php echo bottleavatar();?>" style="height:50px;width:auto;border-radius:25px;"></img></a>
               <?php echo getmenu(); ?></p>
         </div>
       </nav>
@@ -148,7 +148,7 @@ bb_tags();
 			 <div style="height:50px;"></div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container" style="text-align: center;height: 0;">
-        <small style="line-height: 48px;"><p>&copy;<?php echo date('Y'); ?> <?php echo bottlename(); ?></p></small>  
+        <small style="line-height: 48px;">&copy;<?php echo date('Y'); ?> <?php echo bottlename(); ?></small>  
 		<small style="line-height: 48px;"><a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow"><?php echo bottlebeian(); ?></a></small>
     </div>
 </nav>
