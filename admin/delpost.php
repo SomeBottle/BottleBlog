@@ -1,9 +1,7 @@
 ﻿<?php
 @session_start();
-if(!isset($_SESSION['iflogin'])||!isset($_SESSION['username'])||$_SESSION['iflogin']!=="yes"){
-	echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
-	exit();
-}
+require './bottlelogin/checker.php';
+checkloginadmin();
 $delpost=$_GET['postid'];
 	if(!file_exists("./../contents/posts/post$delpost.php")){
 		echo "<script>alert('文章删除失败！');window.open('editposts.php','_self');</script>";

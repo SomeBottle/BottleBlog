@@ -1,9 +1,7 @@
 ﻿<?php
 @session_start();
-if (!isset($_SESSION['iflogin']) || !isset($_SESSION['username']) || $_SESSION['iflogin'] !== "yes") {
-    echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
-    exit();
-}
+require './bottlelogin/checker.php';
+checkloginadmin();
 if (!file_exists("./../contents/menu/menus.php")) {
     $stringset = '<?php $menudm="' . "&nbsp;<a class='navbar-brand' href='index.php'>首页</a>" . '";?>';
     file_put_contents("./../contents/menu/menus.php", $stringset);

@@ -1,8 +1,6 @@
 ﻿<?php
-if (!isset($_SESSION['iflogin']) || !isset($_SESSION['username']) || $_SESSION['iflogin'] !== "yes") {
-    echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
-    exit();
-}
+require './bottlelogin/checker.php';
+checkloginadmin();
 /*此为日期检查排序器
  SomeBottle*/
 require "./../contents/posts/postnum.php";

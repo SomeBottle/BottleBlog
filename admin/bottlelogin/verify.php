@@ -1,5 +1,5 @@
 ﻿<?php
-@session_start();
+session_start();
 require "./lconfig/configlogin.php";
 ?>
 <form action="verify.php?zc=yes&confirm=yes&do=register" method="post" id="veriform">
@@ -172,6 +172,9 @@ if($allowreg=="yes"){
     //登录开始
     $user = $_POST['user'];
     $pass = $_POST['pass'];
+	if(strlen($pass)>16){
+		$message = "<center>兄dei，这里没有超出16位的密码（诚实脸）</center>";
+	}else{
     if (!is_dir("./user/$user")) {
         $message = "<center>箱子里还找不出这个用户名TAT</center>";
     } else {
@@ -179,6 +182,16 @@ if($allowreg=="yes"){
         require "./user/$user/pw/p2.php";
         require "./user/$user/pw/p3.php";
         require "./user/$user/pw/p4.php";
+		//计数有效密码个数
+		$checkvalidpass=0;
+		$validpass=0;
+		$countpass=1;
+		while($countpass<=4){
+		    if(${"passwd$countpass"}!=='d41d8cd98f00b204e9800998ecf8427e'){
+				$validpass+=1;
+			}
+			$countpass+=1;
+		}
         //切割密码
         $ly1 = substr($pass, 0, 5);
         $ly2 = substr($pass, 5, 5);
@@ -202,6 +215,9 @@ if($allowreg=="yes"){
                 break;
             }
         }
+		if(${"passwd$sx1"}!=='d41d8cd98f00b204e9800998ecf8427e'){
+				$checkvalidpass+=1;
+			}
         while ($ {
             "passwd$sx2"
         } !== md5($ly2)) {
@@ -212,6 +228,9 @@ if($allowreg=="yes"){
                 break;
             }
         }
+		if(${"passwd$sx2"}!=='d41d8cd98f00b204e9800998ecf8427e'){
+				$checkvalidpass+=1;
+			}
         while ($ {
             "passwd$sx3"
         } !== md5($ly3)) {
@@ -222,6 +241,9 @@ if($allowreg=="yes"){
                 break;
             }
         }
+		if(${"passwd$sx3"}!=='d41d8cd98f00b204e9800998ecf8427e'){
+				$checkvalidpass+=1;
+			}
         while ($ {
             "passwd$sx4"
         } !== md5($ly4)) {
@@ -232,6 +254,9 @@ if($allowreg=="yes"){
                 break;
             }
         }
+		if(${"passwd$sx4"}!=='d41d8cd98f00b204e9800998ecf8427e'){
+				$checkvalidpass+=1;
+			}
         if ($ {
             "passwd$sx1"
         } == md5($ly1) && $ {
@@ -241,19 +266,31 @@ if($allowreg=="yes"){
         } == md5($ly3) && $ {
             "passwd$sx4"
         } == md5($ly4)) {
+			if(${"passwd$sx1"}.${"passwd$sx2"}.${"passwd$sx3"}.${"passwd$sx4"}==md5($ly1).md5($ly2).md5($ly3).md5($ly4)){
+				if($checkvalidpass==$validpass){
             $message = "<center>$loginsuccessmessage Code:$result</center>";
-			$_SESSION['iflogin']="yes";
-			$_SESSION['username']=$user;
+			$_SESSION[$sessionname.'iflogin']="yes";
+			$_SESSION[$sessionname.'username']=$user;
+				}else{
+					$message = "<center>$errorpassmessage ErrorCode:LostValidPass</center>";
+				}
+			}else {
+            $message = "<center>$errorpassmessage ErrorCode:$result</center>";
+        }
         } else {
             $message = "<center>$errorpassmessage ErrorCode:$result</center>";
         }
     }
+	}
 } else if ($action == "changepass") {//更改密码核心
     require 'getip.php';
     $user = $_POST['user'];
     $passrecent = $_POST['pass'];
     $confirmrecent = $_POST['repass'];
     $pass = $_POST['pass'];
+	if(strlen($pass)>16){
+		$message = "<center>兄dei，这里没有超出16位的密码（诚实脸）</center>";
+	}else{
     if (!is_dir("./user/$user")) { //测试密码是否正确
         $message = "<center>箱子里还找不出这个用户名TAT</center>";
     } else {
@@ -261,6 +298,16 @@ if($allowreg=="yes"){
         require "./user/$user/pw/p2.php";
         require "./user/$user/pw/p3.php";
         require "./user/$user/pw/p4.php";
+		//计数有效密码个数
+		$checkvalidpass=0;
+		$validpass=0;
+		$countpass=1;
+		while($countpass<=4){
+		    if(${"passwd$countpass"}!=='d41d8cd98f00b204e9800998ecf8427e'){
+				$validpass+=1;
+			}
+			$countpass+=1;
+		}
         //切割密码
         $ly1 = substr($pass, 0, 5);
         $ly2 = substr($pass, 5, 5);
@@ -284,6 +331,9 @@ if($allowreg=="yes"){
                 break;
             }
         }
+		if(${"passwd$sx1"}!=='d41d8cd98f00b204e9800998ecf8427e'){
+				$checkvalidpass+=1;
+			}
         while ($ {
             "passwd$sx2"
         } !== md5($ly2)) {
@@ -294,6 +344,9 @@ if($allowreg=="yes"){
                 break;
             }
         }
+		if(${"passwd$sx2"}!=='d41d8cd98f00b204e9800998ecf8427e'){
+				$checkvalidpass+=1;
+			}
         while ($ {
             "passwd$sx3"
         } !== md5($ly3)) {
@@ -304,6 +357,9 @@ if($allowreg=="yes"){
                 break;
             }
         }
+		if(${"passwd$sx3"}!=='d41d8cd98f00b204e9800998ecf8427e'){
+				$checkvalidpass+=1;
+			}
         while ($ {
             "passwd$sx4"
         } !== md5($ly4)) {
@@ -314,6 +370,9 @@ if($allowreg=="yes"){
                 break;
             }
         }
+		if(${"passwd$sx4"}!=='d41d8cd98f00b204e9800998ecf8427e'){
+				$checkvalidpass+=1;
+			}
         if ($ {
             "passwd$sx1"
         } == md5($ly1) && $ {
@@ -323,6 +382,7 @@ if($allowreg=="yes"){
         } == md5($ly3) && $ {
             "passwd$sx4"
         } == md5($ly4)) {
+			if($checkvalidpass==$validpass){
             //更改密码模块
             if (!empty($_POST['user']) && !empty($_POST['newpass'])) {
                 echo "<script type='text/javascript'>console.log($ifok);</script>";
@@ -378,13 +438,15 @@ if($allowreg=="yes"){
                 $message = "Error:Null";
             }
             //注册核心结束
-            
+            }else{
+				$message = "<center>$errorpassmessage ErrorCode:LostValidPass</center>";
+			}
         } else {
             $message = "<center>$errorpassmessage ErrorCode:$result</center>";
         }
     }
+	}
 }
-@session_write_close();
 ?>
 <form action="<?php echo $refers; ?>" method="post" id="mesform">
 <input type="hidden" id="mes" name="mes" value="<?php echo $message; ?>"></input>

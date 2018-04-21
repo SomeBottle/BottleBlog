@@ -16,7 +16,8 @@
               contentType: false   // tell jQuery not to set contentType
             }).done(function( data ) {
 				mains=eval(data.data);
-				$("#showmain").html("<p>URL:"+mains.url+"</p><p><img src='"+mains.url+"'></img>");
+				$("#showmain").html("<img src='"+mains.url+"'></img>");
+				//document.getElementById('mainc').value=document.getElementById('mainc').value+'\r ![';
             });
             return false;
         }

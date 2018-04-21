@@ -1,6 +1,5 @@
-﻿<?php 
+﻿<?php
 @session_start();
-require "./lconfig/configlogin.php";
 require "checker.php";
 $iflogin=checklogin();
 if($iflogin=="yes"){

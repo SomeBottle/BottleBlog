@@ -1,10 +1,8 @@
 ﻿<?php
 @session_start();
 $starttime=microtime(true);
-if (!isset($_SESSION['iflogin']) || !isset($_SESSION['username']) || $_SESSION['iflogin'] !== "yes") {
-    echo "<script>alert('没有登录...');window.open('bottlelogin/login.php','_self');</script>";
-    exit();
-}
+require './bottlelogin/checker.php';
+checkloginadmin();
 function delindex($path){//删除index缓存
    if(is_dir($path)){
    $p = scandir($path);

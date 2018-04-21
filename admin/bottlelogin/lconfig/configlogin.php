@@ -1,7 +1,6 @@
 ﻿<?php
-$serverhostpath=str_replace("/admin/bottlelogin","",dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]));
 $windowtitle="SomeBottle's Login Portal";//窗口标题
-$maintitle="Blog's Login Portal";//主标题
+$maintitle="Bottle's Login Portal";//主标题
 $registertitle="Please Register";//注册标题
 $changepasstitle="ChangePassword";//更换密码标题
 $errorpassmessage="密码错误了哦~";//密码错误
@@ -13,5 +12,6 @@ $retypeerror="重复密码错误！";//重复密码错误
 $changesuccessmessage="密码成功被修改！";//修改密码成功
 $loginrefer="./../main.php";//登录后重定向
 $notlogged="你还没有被允许进入箱子呢！";//还没有登录，未经过checker验证
+$sessionname='bottleblog';//用于在同一域名下区别登录session的标识名
 $allowreg="no";//是否允许注册，是:"yes",否:"no"
 ?>

@@ -1,8 +1,8 @@
 ﻿<?php
-@session_start();
+session_start();
 require "./lconfig/configlogin.php";
 $message=$_POST['mes'];
-@session_write_close();
+session_write_close();
 ?>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> 
@@ -32,7 +32,6 @@ $message=$_POST['mes'];
 <p><button type="submit" class="btn btn-default">提交</button><?php if($allowreg=="yes"){ ?>&nbsp;<button type="button" class="btn btn-info" onclick="goreg()">注册</button><?php } ?></p>
 </div>
 </form>
-<p><button type="button" class="btn btn-success" onclick="back()">返回首页</button></p>
 </center>
 </body>
 <?php
@@ -47,8 +46,5 @@ if(strpos($message,"Founded")!==false){
 <script>
 function goreg(){
 	window.open('register.php','_self');
-}
-function back(){
-	window.open('<?php echo str_replace("/admin/bottlelogin","",dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"])); ?>','_self');
 }
 </script>
