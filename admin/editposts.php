@@ -1,6 +1,6 @@
 ﻿<?php
 @session_start();
-require './bottlelogin/checker.php';
+require_once './bottlelogin/checker.php';
 checkloginadmin();
 if (!file_exists("./../contents/pages/pagenum.php")) {
     $filestring = '<?php $pnum=0;?>';

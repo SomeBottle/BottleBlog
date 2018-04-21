@@ -1,6 +1,6 @@
 ﻿<?php
 @session_start();
-require './bottlelogin/checker.php';
+require_once './bottlelogin/checker.php';
 checkloginadmin();
 $menudm=$_POST['daima'];
 $stringset='<?php $menudm="'.$menudm.'";?>';

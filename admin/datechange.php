@@ -1,5 +1,5 @@
 ﻿<?php
-require './bottlelogin/checker.php';
+require_once './bottlelogin/checker.php';
 checkloginadmin();
 /*此为日期检查排序器
  SomeBottle*/

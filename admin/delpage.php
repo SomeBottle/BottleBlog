@@ -1,6 +1,6 @@
 ﻿<?php
 @session_start();
-require './bottlelogin/checker.php';
+require_once './bottlelogin/checker.php';
 checkloginadmin();
 $delpage = $_GET['pageid'];
 if (!file_exists("./../contents/pages/page$delpage.php")) {

@@ -1,6 +1,6 @@
 ﻿<?php
 @session_start();
-require './bottlelogin/checker.php';
+require_once './bottlelogin/checker.php';
 checkloginadmin();
 if (!file_exists("./../contents/menu/menus.php")) {
     $stringset = '<?php $menudm="' . "&nbsp;<a class='navbar-brand' href='index.php'>首页</a>" . '";?>';

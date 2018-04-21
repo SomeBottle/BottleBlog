@@ -1,5 +1,5 @@
 ﻿<?php
-require dirname(__FILE__)."./lconfig/configlogin.php";
+require dirname(__FILE__)."/lconfig/configlogin.php";
 $serverhostpath='http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
 $user=@$_SESSION[$sessionname.'username'];
 function checklogin(){

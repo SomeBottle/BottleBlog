@@ -1,5 +1,5 @@
 ﻿<?php
-require './bottlelogin/checker.php';
+require_once './bottlelogin/checker.php';
 checkloginadmin();
 /*页码静态生成器（加快加载速度） SomeBottle*/
 require "./../contents/posts/postnum.php";

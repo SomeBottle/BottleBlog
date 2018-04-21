@@ -1,6 +1,6 @@
 ﻿<?php
 @session_start();
-require './bottlelogin/checker.php';
+require_once './bottlelogin/checker.php';
 checkloginadmin();
 $blogname=$_POST['blogname'];
 $blogmeta=$_POST['blogtalk'];

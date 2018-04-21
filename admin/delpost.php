@@ -1,6 +1,6 @@
 ﻿<?php
 @session_start();
-require './bottlelogin/checker.php';
+require_once './bottlelogin/checker.php';
 checkloginadmin();
 $delpost=$_GET['postid'];
 	if(!file_exists("./../contents/posts/post$delpost.php")){

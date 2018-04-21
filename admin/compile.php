@@ -1,7 +1,7 @@
 ﻿<?php
 @session_start();
 $starttime=microtime(true);
-require './bottlelogin/checker.php';
+require_once './bottlelogin/checker.php';
 checkloginadmin();
 function delindex($path){//删除index缓存
    if(is_dir($path)){
