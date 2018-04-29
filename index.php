@@ -12,9 +12,9 @@ require "./contents/catalog/pagegnum.php";
 if (!empty($_GET['tag'])) { //如果是标签页
     $gettype="tag";
 }
-if(is_numeric($postid) && strpos($postid, "=") == false){
+if(is_numeric($postid) && strpos($postid, urlencode("=")) == false){
 	$gettype="post";
-}else if (!empty($pageid) && strpos($pageid, "=") == false) {
+}else if (!empty($pageid) && strpos($pageid, urlencode("=")) == false) {
     if (strpos($pageid, "tag") !== false) { //如果是标签页
     $gettype="tag";
     }else{
