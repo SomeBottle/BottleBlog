@@ -156,29 +156,34 @@ function bb_showpost() { //文章显示模块
     }
     //文章显示结束
     if (empty($endid)) {
-        $export = $export . "<hr><h2>";
-        $export = $export . "<p>暂时还没有文章呢QAQ</p>";
-        $export = $export . "</h2><p></p>";
+		$contentm=file_get_contents(themeurl('postlist.html'));
+        $contentm1=str_replace('[title]','',$contentm);
+        $contentm2=str_replace('[link]','',$contentm1);
+        $contentm3=str_replace('[scontent]','暂时还没有文章呢QAQ',$contentm2);
+        $contentm4=str_replace('[date]','',$contentm3);
+        $export = $export . $contentm4;
     }
     if ($startid == $endid) { //如果这一页只有一篇文章
         if (file_exists(contenturl() . "/posts/post$startid.php")) {
             require contenturl() . "/posts/post$startid.php";
-            $export = $export . "<hr><h2>";
-            $export = $export . "<a href='" . bottlehost() . "/?o$startid'>$title</a>";
-            $export = $export . "</h2><p></p>";
-            $export = $export . "<p>" . mb_substr(strip_tags(Markdown(htmlspecialchars_decode($content))), 0, 120, "utf-8") . "......</p>";
-            $export = $export . "<p></p><small class='small-date'>发布于" . changedate($date) . "</small>";
+			$contentm=file_get_contents(themeurl('postlist.html'));
+         $contentm1=str_replace('[title]',$title,$contentm);
+        $contentm2=str_replace('[link]',bottlehost()."/?o$startid",$contentm1);
+        $contentm3=str_replace('[scontent]',mb_substr(strip_tags(Markdown(htmlspecialchars_decode($content))), 0, 120, "utf-8"),$contentm2);
+        $contentm4=str_replace('[date]',changedate($date),$contentm3);
+            $export = $export . $contentm4;
         }
     }
     $listnum = $endid;
     while ($listnum >= $startid) {
         if (file_exists(contenturl() . "/posts/post$listnum.php")) {
             require contenturl() . "/posts/post$listnum.php";
-            $export = $export . "<hr><h2>";
-            $export = $export . "<a href='" . bottlehost() . "/?o$listnum'>$title</a>";
-            $export = $export . "</h2><p></p>";
-            $export = $export . "<p>" . mb_substr(strip_tags(Markdown(htmlspecialchars_decode($content))), 0, 120, "utf-8") . "......</p>";
-            $export = $export . "<p></p><small class='small-date'>发布于" . changedate($date) . "</small>";
+			$contentm=file_get_contents(themeurl('postlist.html'));
+         $contentm1=str_replace('[title]',$title,$contentm);
+        $contentm2=str_replace('[link]',bottlehost()."/?o$listnum",$contentm1);
+        $contentm3=str_replace('[scontent]',mb_substr(strip_tags(Markdown(htmlspecialchars_decode($content))), 0, 120, "utf-8"),$contentm2);
+        $contentm4=str_replace('[date]',changedate($date),$contentm3);
+            $export = $export . $contentm4;
         }
         $listnum-= 1;
     }
@@ -294,11 +299,13 @@ function bb_search() {
             if (file_exists(contenturl() . "/posts/post$tagcheck.php")) {
                 require contenturl() . "/posts/post$tagcheck.php";
                 if (strpos($title, $searchfm) !== false || strpos($content, $searchfm) !== false) {
-                    echo "<hr><h2>";
-                    echo "<a href='" . bottlehost() . "/?o$tagcheck'>$title</a>";
-                    echo "</h2><p></p>";
-                    echo "<p>" . mb_substr(strip_tags(htmlspecialchars_decode($content)), 0, 120, "utf-8") . "......</p>";
-                    echo "<p></p><small class='small-date'>发布于" . changedate($date) . "</small>";
+					$contentm=file_get_contents(themeurl('postlist.html'));
+         $contentm1=str_replace('[title]',$title,$contentm);
+        $contentm2=str_replace('[link]',bottlehost()."/?o$tagcheck",$contentm1);
+        $contentm3=str_replace('[scontent]',mb_substr(strip_tags(Markdown(htmlspecialchars_decode($content))), 0, 120, "utf-8"),$contentm2);
+        $contentm4=str_replace('[date]',changedate($date),$contentm3);
+            $export =$contentm4;
+                    echo $export;
                 }
             }
             $tagcheck-= 1;
@@ -336,12 +343,12 @@ function bb_tags() {
             if (file_exists(contenturl() . "/posts/post$tagcheck.php")) {
                 require contenturl() . "/posts/post$tagcheck.php";
                 if (strpos($tag, $label) !== false) {
-                    $echostring = $echostring . "<p>$title</p><p>&nbsp;</p>";
-                    echo "<hr><h2>";
-                    echo "<a href='" . bottlehost() . "/?o$tagcheck'>$title</a>";
-                    echo "</h2><p></p>";
-                    echo "<p>" . mb_substr(strip_tags(htmlspecialchars_decode($content)), 0, 120, "utf-8") . "......</p>";
-                    echo "<p></p><small class='small-date'>发布于$date</small>";
+					$contentm=file_get_contents(themeurl('postlist.html'));
+         $contentm1=str_replace('[title]',$title,$contentm);
+        $contentm2=str_replace('[link]',bottlehost()."/?o$tagcheck",$contentm1);
+        $contentm3=str_replace('[scontent]',mb_substr(strip_tags(Markdown(htmlspecialchars_decode($content))), 0, 120, "utf-8"),$contentm2);
+        $contentm4=str_replace('[date]',changedate($date),$contentm3);
+                    echo $contentm4;
                 }
             }
             $tagcheck-= 1;
