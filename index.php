@@ -5,8 +5,8 @@ if (!file_exists("./admin/first.flag")) {
 }
 require_once dirname(__FILE__).'/assets/core.php';
 $pagerid = str_replace("/index.php", "", $_SERVER['REQUEST_URI']);
-$pageid = getag($_SERVER['REQUEST_URI'], 2);
-$postid=getpostid($_SERVER['REQUEST_URI'], 2);
+$pageid = urlencode(getag($_SERVER['REQUEST_URI'], 2));
+$postid=urlencode(getpostid($_SERVER['REQUEST_URI'], 2));
 $gettype='';
 require "./contents/catalog/pagegnum.php";
 if (!empty($_GET['tag'])) { //如果是标签页

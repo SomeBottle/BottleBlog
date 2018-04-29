@@ -191,13 +191,14 @@ function bb_showpost() { //文章显示模块
 }
 function bb_pagetitle() {
     global $pageid;
+	$npg=urldecode($pageid);
     $getid = "";
     $check = 0;
     require contenturl()."/pages/pagenum.php";
     while ($check <= $pnum) {
         if (file_exists(contenturl()."/pages/page$check.php")) {
             require contenturl()."/pages/page$check.php";
-            if ($pageid == $pagelink) {
+            if ($npg == $pagelink) {
                 $getid = $check;
                 break;
             }
@@ -213,13 +214,14 @@ function bb_pagetitle() {
 }
 function bb_pagecontent() {
     global $pageid;
+	$npg=urldecode($pageid);
     $getid = "";
     $check = 0;
     require contenturl()."/pages/pagenum.php";
     while ($check <= $pnum) {
         if (file_exists(contenturl()."/pages/page$check.php")) {
             require contenturl()."/pages/page$check.php";
-            if ($pageid == $pagelink) {
+            if ($npg == $pagelink) {
                 $getid = $check;
                 break;
             }
