@@ -327,15 +327,15 @@ function bb_tags() {
         $arr = explode(",", $tagstring);
         $totaltagnum = count($arr) - 1;
         $makenum = 0;
+		$export='<hr><h3>';
         while ($makenum <= $totaltagnum) {
-			$contentm=file_get_contents(themeurl('postlist.html'));
-        $contentm1=str_replace('[title]',$arr[$makenum],$contentm);
-        $contentm2=str_replace('[link]','?tag='.$arr[$makenum],$contentm1);
-        $contentm3=str_replace('[scontent]','',$contentm2);
-        $contentm4=str_replace('[date]','',$contentm3);
-        echo $contentm4;
+			if(!empty($arr[$makenum])){
+		$export=$export."[<a href='?tag=".$arr[$makenum]."'>".$arr[$makenum]."</a>]&nbsp;";
+			}
             $makenum+= 1;
         }
+		$export=$export."</h3>";
+		echo $export;
     } else {
         date_default_timezone_set('Asia/Shanghai');
         require contenturl() . "/posts/postnum.php";
