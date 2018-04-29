@@ -328,9 +328,12 @@ function bb_tags() {
         $totaltagnum = count($arr) - 1;
         $makenum = 0;
         while ($makenum <= $totaltagnum) {
-            echo "<hr><h2>";
-            echo "<a href='?tag=" . $arr[$makenum] . "'>" . $arr[$makenum] . "</a>";
-            echo "</h2><p></p>";
+			$contentm=file_get_contents(themeurl('postlist.html'));
+        $contentm1=str_replace('[title]',$arr[$makenum],$contentm);
+        $contentm2=str_replace('[link]','?tag='.$arr[$makenum],$contentm1);
+        $contentm3=str_replace('[scontent]','',$contentm2);
+        $contentm4=str_replace('[date]','',$contentm3);
+        echo $contentm4;
             $makenum+= 1;
         }
     } else {
