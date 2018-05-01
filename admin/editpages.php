@@ -32,6 +32,7 @@ date_default_timezone_set('Asia/Shanghai');
 <link rel="stylesheet" href="./../assets/css/bootstrap.min.css">
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/pagedown/1.0/Markdown.Converter.min.js"></script>
+<script src="https://api.imbottle.com/upweibo.js"></script>
 <title>Blog-后台管理</title>
 </head>
     <div class="container">
@@ -67,7 +68,7 @@ date_default_timezone_set('Asia/Shanghai');
 					  <div id='toolbox'>
 					    <hr><h2>撰写工具</h2>
 						<p><div id='showmain' style='max-height:80px'></div></p>
-						<p><strong>上传图片</strong></p><p>
+						<p><strong>上传图片到 sm.ms</strong></p><p>
 						<form action="https://sm.ms/api/upload" id="fileinfo" method="post"
 enctype="multipart/form-data">
 <input type="file" name="smfile" id="smfile" /> 
@@ -75,6 +76,16 @@ enctype="multipart/form-data">
 <input type="hidden" name="format" value="json"></input>
 <br />
 </form></p>
+						<p><strong>上传图片到微博</strong></p><p>
+						<form action="https://api.imbottle.com/wup.php" id="fileinfo2" method="post"
+enctype="multipart/form-data">
+<input type="file" name="wbpic" id='filed' /> 
+<br />
+</form></p>
+<p><strong>添加链接</strong></p>
+<p><input type='text' class="form-control" id='linkmeta' placeholder='描述'/></p>
+<p><input type='text' class="form-control" id='linkname' placeholder='链接'/></p>
+<p><label>在新页面打开</label><input type="checkbox" name="chose" value="_blank">&nbsp;<button type="button" class="btn btn-default" onclick="addlink()">添加</button></p>
 <p><strong>预览</strong></p>
 <p><button type="button" class="btn btn-default" onclick="previews()">Preview</button></p>
 					  </div>

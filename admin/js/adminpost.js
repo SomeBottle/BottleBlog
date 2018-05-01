@@ -3,7 +3,7 @@
         var str2 = str.replace(/"/g, "'");
         return str2;  
         }
-		/*上传图片模块*/
+		/*工具箱模块*/
 function submitpic() {
             console.log("submit event");
             var fd = new FormData(document.getElementById("fileinfo"));
@@ -26,6 +26,21 @@ function submitpic() {
     $("#smfile").change(function(e) {
         submitpic();
     });
+	$("#filed").change(function(e) {
+        var a=upweibo('fileinfo2');
+		$("#showmain").html("<img style='max-height:80px;' src='"+a+"'></img>");
+				document.getElementById('mainc').value=document.getElementById('mainc').value+'\r ![]('+a+')  ';
+    });
+	function addlink(){
+		var check = document.getElementsByName('chose')[0];
+		var exports='['+document.getElementById('linkmeta').value+']('+document.getElementById('linkname').value+')';
+		if(check.checked==true){
+			exports="<a href='"+document.getElementById('linkname').value+"' target='_blank'>"+document.getElementById('linkmeta').value+"</a>";
+		}
+		exports=exports+'  ';
+		console.log(exports);
+		document.getElementById('mainc').value=document.getElementById('mainc').value+'\r '+exports;
+	}
 /*模块结束*/
 document.getElementById('toolbox').style.display='none';
 function tool() {
