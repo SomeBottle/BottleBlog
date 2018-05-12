@@ -300,7 +300,7 @@ function bb_search() {
         while ($tagcheck >= 0) {
             if (file_exists(contenturl() . "/posts/post$tagcheck.php")) {
                 require contenturl() . "/posts/post$tagcheck.php";
-                if (strpos($title, $searchfm) !== false || strpos($content, $searchfm) !== false) {
+                if (stripos($title, $searchfm) !== false || stripos($content, $searchfm) !== false) {
 					$contentm=file_get_contents(themeurl('postlist.html'));
          $contentm1=str_replace('[title]',$title,$contentm);
         $contentm2=str_replace('[link]',bottlehost()."/?o$tagcheck",$contentm1);
@@ -347,7 +347,7 @@ function bb_tags() {
         while ($tagcheck >= 0) {
             if (file_exists(contenturl() . "/posts/post$tagcheck.php")) {
                 require contenturl() . "/posts/post$tagcheck.php";
-                if (strpos($tag, $label) !== false) {
+                if (stripos($tag, $label) !== false) {
 					$contentm=file_get_contents(themeurl('postlist.html'));
          $contentm1=str_replace('[title]',$title,$contentm);
         $contentm2=str_replace('[link]',bottlehost()."/?o$tagcheck",$contentm1);
