@@ -1,7 +1,7 @@
 ﻿<?php
 @session_start();
-require_once './bottlelogin/checker.php';
-checkloginadmin();
+require_once './bottlelogin/o.php';
+checklogin();
 $menudm=$_POST['daima'];
 $stringset='<?php $menudm="'.$menudm.'";?>';
 file_put_contents("./../contents/menu/menus.php",$stringset);

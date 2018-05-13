@@ -1,7 +1,7 @@
 ﻿<?php
 @session_start();
-require_once './bottlelogin/checker.php';
-checkloginadmin();
+require_once './bottlelogin/o.php';
+checklogin();
 $delpost=$_GET['postid'];
 	if(!file_exists("./../contents/posts/post$delpost.php")){
 		echo "<script>alert('文章删除失败！');window.open('editposts.php','_self');</script>";

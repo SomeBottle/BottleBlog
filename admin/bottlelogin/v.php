@@ -1,8 +1,33 @@
 ﻿<?php
 session_start();
 require "./lconfig/configlogin.php";
+function searchword($file,$word){
+$mystring = file_get_contents("$file"); 
+$findme   = $word;
+ $pos = strpos($mystring, $findme);
+        if ($pos === false)
+{
+                return 'no';
+          }
+        else
+          {
+                return 'yes';
+          }
+}
+function getip()  
+{  
+    global $ip;  
+    if (getenv("HTTP_CLIENT_IP"))  
+        $ip = getenv("HTTP_CLIENT_IP");  
+    else if(getenv("HTTP_X_FORWARDED_FOR"))  
+        $ip = getenv("HTTP_X_FORWARDED_FOR");  
+    else if(getenv("REMOTE_ADDR"))  
+        $ip = getenv("REMOTE_ADDR");  
+    else $ip = "Unknow";  
+    return md5($ip);  
+}  
 ?>
-<form action="verify.php?zc=yes&confirm=yes&do=register" method="post" id="veriform">
+<form action="v.php?zc=yes&confirm=yes&do=register" method="post" id="veriform">
 <input type="hidden" id="typenum" name="tpnum"></input>
 <input type="hidden" id="vnum" name="vnum"></input>
 <input type="hidden" id="usert" name="user"></input>
@@ -15,9 +40,16 @@ require "./lconfig/configlogin.php";
 $action = $_GET['do'];
 $refers = $_POST['dotype'];
 $message = '';
-if ($action == "register") { //注册
+if($action=='logout'){
+	?>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> 
+<h1>正在卸载箱子...</h1>
+	<?php
+session_destroy();
+session_write_close();
+echo "<script>window.open('m.php','_self');</script>";
+}else if ($action == "register") { //注册
 if($allowreg=="yes"){
-    require 'getip.php';
     $ifok = $_COOKIE["rego"];
     $user = $_POST['user'];
     $pvnum = $_POST['vnum'];
@@ -63,7 +95,6 @@ if($allowreg=="yes"){
             if (md5($_POST['tpnum']) == $_SESSION['tpnum']) {
                 if (md5($_POST['vnum']) == $_SESSION['vnum']) {
                     $ip = getip();
-                    require 'searchword.php';
                     //验证核心
                     $ifbanned = searchword("registerban/ban.list", $ip);
                     if ($ifbanned == 'no') {
@@ -132,14 +163,17 @@ if($allowreg=="yes"){
                                             $message = "<center>$alreadyregistered</center>";
                                         }
                                         //注册结束
-                                        if (!file_exists("registerban/" . $ip . ".ready")) {
-                                            file_put_contents("registerban/" . $ip . ".ready", $ip);
-                                            $recentban = file_get_contents("registerban/ban.list");
+										if(!is_dir('./registerban')){
+											mkdir('./registerban');
+										}
+                                        if (!file_exists("./registerban/" . $ip . ".ready")) {
+                                            file_put_contents("./registerban/" . $ip . ".ready", $ip);
+                                            $recentban = file_get_contents("./registerban/ban.list");
                                             $nowban = $recentban . "|" . $ip;
-                                            file_put_contents("registerban/ban.list", $nowban);
-                                            unlink("registerban/" . $ip . ".ready");
+                                            file_put_contents("./registerban/ban.list", $nowban);
+                                            unlink("./registerban/" . $ip . ".ready");
                                         } else {
-                                            file_put_contents("registerban/" . $ip . ".ready", $ip);
+                                            file_put_contents("./registerban/" . $ip . ".ready", $ip);
                                         }
                                     } else {
                                         $message = "<center>密码长度过短或过长！最短6个字符，最长16个字符！</center>";
@@ -165,7 +199,7 @@ if($allowreg=="yes"){
         }
     }
 }else{
-	echo "<script>alert('很抱歉，注册被关闭！');window.open('login.php','_self');</script>";
+	echo "<script>alert('很抱歉，注册被关闭！');window.open('m.php','_self');</script>";
 	exit();
 }
 } else if ($action == "login") {
@@ -283,7 +317,6 @@ if($allowreg=="yes"){
     }
 	}
 } else if ($action == "changepass") {//更改密码核心
-    require 'getip.php';
     $user = $_POST['user'];
     $passrecent = $_POST['pass'];
     $confirmrecent = $_POST['repass'];

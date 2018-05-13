@@ -1,6 +1,6 @@
 <?php
 if (!file_exists("./admin/first.flag")) {
-    echo "<script>alert('Please goto the admin!');window.open('./admin/bottlelogin/login.php','_self');</script>";
+    echo "<script>alert('Please goto the admin!');window.open('./admin/bottlelogin/m.php','_self');</script>";
     exit();
 }
 require_once dirname(__FILE__).'/assets/core.php';

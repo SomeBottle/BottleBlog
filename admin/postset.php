@@ -1,7 +1,7 @@
 ﻿<?php
 @session_start();
-require_once './bottlelogin/checker.php';
-checkloginadmin();
+require_once './bottlelogin/o.php';
+checklogin();
 $blogname=$_POST['blogname'];
 $blogmeta=$_POST['blogtalk'];
 $bloghost=$_POST['bloghost'];

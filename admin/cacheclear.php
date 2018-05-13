@@ -1,7 +1,7 @@
 ﻿<?php
 @session_start();
-require_once './bottlelogin/checker.php';
-checkloginadmin();
+require_once './bottlelogin/o.php';
+checklogin();
 function delfile($path){
    if(is_dir($path)){
    $p = scandir($path);

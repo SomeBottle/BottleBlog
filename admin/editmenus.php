@@ -1,7 +1,7 @@
 ﻿<?php
 @session_start();
-require_once './bottlelogin/checker.php';
-checkloginadmin();
+require_once './bottlelogin/o.php';
+checklogin();
 if (!file_exists("./../contents/menu/menus.php")) {
     $stringset = '<?php $menudm="' . "&nbsp;<a class='navbar-brand' href='index.php'>首页</a>" . '";?>';
     file_put_contents("./../contents/menu/menus.php", $stringset);

@@ -1,7 +1,7 @@
 ﻿<?php
 @session_start();
-require_once './bottlelogin/checker.php';
-checkloginadmin();
+require_once './bottlelogin/o.php';
+checklogin();
 date_default_timezone_set('Asia/Shanghai');
 //初始化
 if(!file_exists("first.flag")){
@@ -96,10 +96,10 @@ require "savedconfig/blogconfig.php";
 	</center>
 	<script>
 	function logout(){
-		window.open('./bottlelogin/logout.php','_self');
+		window.open('./bottlelogin/v.php?do=logout','_self');
 	}
 	function resetpass(){
-		window.open('./bottlelogin/editpass.php','_self');
+		window.open('./bottlelogin/m.php?t=rpass','_self');
 	}
 	function cacheclear(){
 		if(confirm('真的要清除缓存吗？')){

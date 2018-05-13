@@ -1,6 +1,6 @@
 ﻿<?php
-require_once './bottlelogin/checker.php';
-checkloginadmin();
+require_once './bottlelogin/o.php';
+checklogin();
 /*此为日期检查排序器
  SomeBottle*/
 require "./../contents/posts/postnum.php";

@@ -4,8 +4,8 @@ require_once './../assets/core.php';
 date_default_timezone_set('Asia/Shanghai');
 $givepost = $_GET['step'];
 $result = "";
-require './bottlelogin/checker.php';
-checkloginadmin();
+require './bottlelogin/o.php';
+checklogin();
     if (intval($givepost) == 1) { //如果是缓存文章
         echo "<script>window.parent.document.getElementById('status').innerHTML='状态：文章已经缓存完毕，正在准备缓存页面';window.parent.document.getElementById('status').style='color:red;';window.open('cachecontroller.php?step=2','_self');</script>";
         require "./../contents/posts/postnum.php";

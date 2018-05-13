@@ -1,6 +1,6 @@
 ﻿<?php
-require_once './bottlelogin/checker.php';
-checkloginadmin();
+require_once './bottlelogin/o.php';
+checklogin();
 /*页码静态生成器（加快加载速度） SomeBottle*/
 require "./../contents/posts/postnum.php";
 $checkpage = $pnum;

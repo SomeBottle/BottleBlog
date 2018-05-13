@@ -1,7 +1,7 @@
 ﻿<?php
 @session_start();
-require_once './bottlelogin/checker.php';
-checkloginadmin();
+require_once './bottlelogin/o.php';
+checklogin();
 require './savedconfig/blogconfig.php';
 if (!file_exists("./../contents/pages/pagenum.php")) {
     $filestring = '<?php $pnum=0;?>';

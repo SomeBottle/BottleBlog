@@ -1,1 +1,1 @@
-﻿<script>window.open('./bottlelogin/','_self')</script>
+﻿<script>window.open('./bottlelogin/index.php','_self');</script>

@@ -1,7 +1,7 @@
 ﻿<?php
 @session_start();
-require_once './bottlelogin/checker.php';
-checkloginadmin();
+require_once './bottlelogin/o.php';
+checklogin();
 $delpage = $_GET['pageid'];
 if (!file_exists("./../contents/pages/page$delpage.php")) {
     echo "<script>alert('页面删除失败！');window.open('editpages.php','_self');</script>";
