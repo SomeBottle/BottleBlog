@@ -1,7 +1,7 @@
 /*这里只是一个示例style.css，可以用于自定义模板，该文件在header.php引入*/
 img{
 	max-height:auto;
-	max-width:400px;
+	max-width:100%;
 }
 blockquote{
           font: 14px/22px normal helvetica, sans-serif;
