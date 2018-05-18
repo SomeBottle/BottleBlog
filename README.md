@@ -1,6 +1,11 @@
 # BottleBlog
 ## 无须数据库的，基于PHP的博客系统~
 * Markdown解析器源于**PHP-Markdown**
+ ![Example](https://ww2.sinaimg.cn/large/ed039e1fgy1frgar47bhkj20js0jl408)
+===============================
+#### 建议PHP版本：PHP5.6(其实5.4)也可以
+### 请打开PHP的mbstring扩展，以下是CPanel示例
+
 ### 详细介绍：https://imbottle.com/?bottleblog
 * 轻便
 * 容易备份
