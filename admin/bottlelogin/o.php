@@ -1,4 +1,5 @@
-﻿<?php
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php
 require dirname(__FILE__)."/lconfig/configlogin.php";
 $serverhostpath='http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
 $user=@$_SESSION[$sessionname.'username'];
@@ -11,7 +12,6 @@ if(!isset($_SESSION[$sessionname.'iflogin'])||!isset($_SESSION[$sessionname.'use
 		exit();
 	}
 	header('Location: '.$a.'m.php?t=login');
-	echo "<script>alert('没有登录...');</script>";
 	exit();
 }else{
 	return 'yes';

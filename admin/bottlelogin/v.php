@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 require "./lconfig/configlogin.php";
 function searchword($file,$word){
@@ -27,6 +27,7 @@ function getip()
     return md5($ip);  
 }  
 ?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <form action="v.php?zc=yes&confirm=yes&do=register" method="post" id="veriform">
 <input type="hidden" id="typenum" name="tpnum"></input>
 <input type="hidden" id="vnum" name="vnum"></input>
