@@ -1,4 +1,5 @@
 ﻿ <?php
+error_reporting(E_ALL & ~E_NOTICE);
 require_once dirname(__FILE__) . '/../admin/savedconfig/blogconfig.php';
 function bottlename() {
     global $bname;
